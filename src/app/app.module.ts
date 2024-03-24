@@ -4,8 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
-import { LoginComponent } from './pages/log-system/login/login.component';
-import { RegisterComponent } from './pages/log-system/register/register.component';
 import { CreateComponent } from './pages/create/create.component';
 import { EditComponent } from './pages/edit/edit.component';
 import { Pages404Component } from './pages/pages404/pages404.component';
@@ -18,13 +16,19 @@ import { CartComponent } from './components/cart/cart.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { StrumentiCardComponent } from './components/strumenti-card/strumenti-card.component';
 import { DetailsComponent } from './pages/details/details.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RecensioniComponent } from './components/recensioni/recensioni.component';
+import { BancomatComponent } from './components/payment/bancomat/bancomat.component';
+import { TransferComponent } from './components/payment/transfer/transfer.component';
+import { ValutazioniComponent } from './components/valutazioni/valutazioni.component';
+import { LogSystemComponent } from './pages/log-system/log-system.component';
+import { RegisterComponent } from './pages/log-system/register/register.component';
+import { LoginComponent } from './pages/log-system/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    LoginComponent,
-    RegisterComponent,
     CreateComponent,
     EditComponent,
     Pages404Component,
@@ -36,11 +40,20 @@ import { DetailsComponent } from './pages/details/details.component';
     CartComponent,
     PaymentComponent,
     StrumentiCardComponent,
-    DetailsComponent
+    DetailsComponent,
+    RecensioniComponent,
+    BancomatComponent,
+    TransferComponent,
+    ValutazioniComponent,
+    LogSystemComponent,
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

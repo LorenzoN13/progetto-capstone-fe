@@ -1,1 +1,54 @@
-<p>register works!</p>
+<div class="container userTab">
+  <form [formGroup]="form">
+    <div>
+      <label for="nome">Nome:</label>
+      <input class="form-control" type="text" id="nome" formControlName="nome" >
+    </div>
+    <div *ngIf="isValidAndTouched('nome')" class="alert alert-warning">Enter your name</div>
+    <div>
+      <label for="cognome">Cognome:</label>
+      <input class="form-control" type="text" id="cognome" formControlName="cognome">
+    </div>
+    <div *ngIf="isValidAndTouched('cognome')" class="alert alert-warning">Enter your cognome</div>
+
+    <div>
+      <label for="username">Username:</label>
+      <input class="form-control" type="text" id="username" formControlName="username">
+    </div>
+    <div *ngIf="isValidAndTouched('username')" class="alert alert-warning">Enter your username</div>
+
+    <div>
+      <label for="email">Email:</label>
+      <input class="form-control" type="text" id="email" formControlName="email">
+    </div>
+    <div *ngIf="isValidAndTouched('email') && !emailExist" class="alert alert-warning">This isn't a valid email</div>
+    <div *ngIf="emailExist" class="alert alert-warning">This email already exist!</div>
+
+    <div>
+      <label for="password">Password:</label>
+      <input class="form-control" type="password" id="password" formControlName="password">
+    </div>
+    <div *ngIf="isValidAndTouched('password')" class="alert alert-warning">
+      <p>Not a valid password. It must contains:</p>
+      <ul>
+        <li>At least 8 characters</li>
+        <li>A number</li>
+        <li>An uppercase letter</li>
+        <li>A lowercase letter</li>
+        <li>A special character</li>
+      </ul>
+    </div>
+
+    <div>
+      <label for="confirmPassword">Confirm Password:</label>
+      <input class="form-control" type="password" id="confirmPassword" formControlName="confirmPassword">
+    </div>
+    <div *ngIf="isValidAndTouched('confirmPassword')" class="alert alert-warning">
+      {{getCustomMessage('confirmPassword')}}
+    </div>
+    <p>Are you signed?<a routerLink="/LogSystem/login">Log in!</a></p>
+
+    <button [disabled]="!form.valid" class="mt-1 p-1" (click)="submit()">Sign up</button>
+  </form>
+  <div *ngIf="loading">Loading...</div>
+</div>
