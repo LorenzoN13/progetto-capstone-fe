@@ -8,21 +8,23 @@ import { PaymentComponent } from './components/payment/payment.component';
 import { BancomatComponent } from './components/payment/bancomat/bancomat.component';
 import { TransferComponent } from './components/payment/transfer/transfer.component';
 import { ValutazioniComponent } from './components/valutazioni/valutazioni.component';
+import { LogGuard } from './pages/log-system/log.guard';
 
 const routes: Routes = [
   { path: '', pathMatch:'full', redirectTo:'/home' },
   { path: 'home', component: HomeComponent },
   { path: 'recensioni', component: RecensioniComponent },
   { path: 'details/:id', component: DetailsComponent },
+  { path: 'LogSystem',loadChildren: () => import('./pages/log-system/log-system.module').then(m => m.LogSystemModule) },
   { path: 'userprofile', component: UserProfileComponent, canActivate:[LogGuard]},
-  { path: 'valutazioni', component: ValutazioniComponent}
+  { path: 'valutazioni', component: ValutazioniComponent},
   { path: 'payment', component: PaymentComponent,
   children:[
     { path: 'bancomat', component: BancomatComponent},
     { path: 'transfer', component: TransferComponent},
     { path: '', redirectTo: 'bancomat', pathMatch: 'full' }
   ],
-  canActivate:[LogGuard]},
+  canActivate:[LogGuard]}
 
 
 

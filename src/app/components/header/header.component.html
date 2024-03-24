@@ -14,5 +14,13 @@
         </div>
       </div>
     </div>
+    <div>
+      <a *ngIf="isLogged" routerLink="/ordine" class="d-flex align-items-center">
+      </a>
+      <a class="line d-flex align-items-center" routerLink="/userprofile">
+        <p *ngIf="isLogged" class="d-none d-lg-block line m-0 ms-2">{{user.utente.nome}}</p>
+        <p *ngIf="!isLogged" class="m-0 ms-2">Login</p>
+      </a>
+    </div>
   </nav>
 </div>

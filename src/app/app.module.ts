@@ -12,7 +12,6 @@ import { EditProfileComponent } from './pages/user-profile/edit-profile/edit-pro
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { AddToShopComponent } from './components/add-to-shop/add-to-shop.component';
-import { CartComponent } from './components/cart/cart.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { StrumentiCardComponent } from './components/strumenti-card/strumenti-card.component';
 import { DetailsComponent } from './pages/details/details.component';
@@ -21,9 +20,8 @@ import { RecensioniComponent } from './components/recensioni/recensioni.componen
 import { BancomatComponent } from './components/payment/bancomat/bancomat.component';
 import { TransferComponent } from './components/payment/transfer/transfer.component';
 import { ValutazioniComponent } from './components/valutazioni/valutazioni.component';
-import { LogSystemComponent } from './pages/log-system/log-system.component';
-import { RegisterComponent } from './pages/log-system/register/register.component';
-import { LoginComponent } from './pages/log-system/login/login.component';
+import { HttpClientModule } from '@angular/common/http';
+import { OrdineComponent } from './components/ordine/ordine.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +35,6 @@ import { LoginComponent } from './pages/log-system/login/login.component';
     FooterComponent,
     HeaderComponent,
     AddToShopComponent,
-    CartComponent,
     PaymentComponent,
     StrumentiCardComponent,
     DetailsComponent,
@@ -45,15 +42,14 @@ import { LoginComponent } from './pages/log-system/login/login.component';
     BancomatComponent,
     TransferComponent,
     ValutazioniComponent,
-    LogSystemComponent,
-    RegisterComponent,
-    LoginComponent
+    OrdineComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

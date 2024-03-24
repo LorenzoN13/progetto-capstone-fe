@@ -1,25 +1,22 @@
-
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable, map } from 'rxjs';
-import { RuoliService } from '../../services/ruoli.service';
+import { LogSystemService } from '../../services/log-system.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AdminGuard {
+export class LogGuard {
   constructor(
-    private RolesSVC:RuoliService,
+    private LSS:LogSystemService,
     private router:Router
     ){}
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return this.RolesSVC.userRole$.pipe(map(userRole=>{
-        if(!userRole) return false;
-        let admin= userRole.ruolo==`admin`?true:false
-        if(!admin)this.router.navigate([`/`]);
-        return admin
+    return this.LSS.booleanUtente$.pipe(map(logged=>{
+        if(!logged) this.router.navigate(['/LogSystem/login']);
+        return logged
       }));;
   }
   canActivateChild(

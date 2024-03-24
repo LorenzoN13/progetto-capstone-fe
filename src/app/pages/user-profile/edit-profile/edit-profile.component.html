@@ -1,1 +1,44 @@
-<p>edit-profile works!</p>
+<form [formGroup]="form" *ngIf="editMode">
+  <div>
+    <label for="name">Nome:</label>
+    <input class="form-control" type="text" id="name" formControlName="name" >
+  </div>
+  <div *ngIf="isValidAndTouched('name')" class="alert alert-warning">Non è un nome valido</div>
+
+  <div>
+    <label for="surname">Cognome:</label>
+    <input class="form-control" type="text" id="surname" formControlName="surname">
+  </div>
+  <div *ngIf="isValidAndTouched('surname')" class="alert alert-warning">Non è un cognome valido</div>
+
+  <div>
+    <label for="email">Email:</label>
+    <input class="form-control" type="text" id="email" formControlName="email">
+  </div>
+  <div *ngIf="isValidAndTouched('email')" class="alert alert-warning">Non è una mail valida</div>
+
+  <div>
+    <label for="password">Password:</label>
+    <input class="form-control" type="password" id="password" formControlName="password">
+  </div>
+  <div *ngIf="isValidAndTouched('password')" class="alert alert-warning">
+    <p>Non è una password valida. La password deve contenere:</p>
+    <ul>
+      <li>Minimo 8 caratteri</li>
+      <li>Almeno un numero</li>
+      <li>Almeno una lettera maiuscola</li>
+      <li>Almeno una lettera minuscola</li>
+      <li>Almeno un carattere speciale</li>
+    </ul>
+  </div>
+
+  <div class="d-flex justify-content-between mt-3">
+    <ng-content></ng-content>
+    <div class="d-flex">
+      <button *ngIf="!admin" (click)="adminSwitch()" class="btn bottone me-2">Admin</button>
+      <button [disabled]="!form.valid" class="btn  bottone" (click)="submit()">Salva</button>
+    </div>
+  </div>
+</form>
+<div *ngIf="loading">Caricamento...</div>
+

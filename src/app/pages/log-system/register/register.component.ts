@@ -26,7 +26,7 @@ export class RegisterComponent {
 
   ngOnInit(){
     this.form = this.fb.group({
-      name: this.fb.control(null,[Validators.required]),
+      nome: this.fb.control(null,[Validators.required]),
       cognome: this.fb.control(null,[Validators.required]),
       username: this.fb.control(null,[Validators.required]),
       email: this.fb.control(null,[Validators.required, Validators.email]),
@@ -36,8 +36,8 @@ export class RegisterComponent {
   }
 
   submit(){
-    this.form.value.name= this.form.value.name.charAt(0).toUpperCase()+this.form.value.name.slice(1).toLowerCase()
-    this.form.value.surname= this.form.value.surname.charAt(0).toUpperCase()+this.form.value.surname.slice(1).toLowerCase()
+    this.form.value.nome= this.form.value.nome.charAt(0).toUpperCase()+this.form.value.nome.slice(1).toLowerCase()
+    this.form.value.cognome= this.form.value.cognome.charAt(0).toUpperCase()+this.form.value.cognome.slice(1).toLowerCase()
 
     this.loading=true;
     delete this.form.value.confirmPassword;
