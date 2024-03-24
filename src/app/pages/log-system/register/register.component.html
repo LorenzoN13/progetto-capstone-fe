@@ -46,7 +46,7 @@
     <div *ngIf="isValidAndTouched('confirmPassword')" class="alert alert-warning">
       {{getCustomMessage('confirmPassword')}}
     </div>
-    <p>Are you signed?<a routerLink="/LogSystem/login">Log in!</a></p>
+    <p class="mt-2">Are you signed?<a routerLink="/LogSystem/login">Log in!</a></p>
 
     <button [disabled]="!form.valid" class="mt-1 p-1" (click)="submit()">Sign up</button>
   </form>
