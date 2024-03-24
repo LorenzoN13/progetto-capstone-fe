@@ -13,6 +13,11 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
 import { EditProfileComponent } from './pages/user-profile/edit-profile/edit-profile.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
+import { AddToShopComponent } from './components/add-to-shop/add-to-shop.component';
+import { CartComponent } from './components/cart/cart.component';
+import { PaymentComponent } from './components/payment/payment.component';
+import { StrumentiCardComponent } from './components/strumenti-card/strumenti-card.component';
+import { DetailsComponent } from './pages/details/details.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +31,12 @@ import { HeaderComponent } from './components/header/header.component';
     UserProfileComponent,
     EditProfileComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    AddToShopComponent,
+    CartComponent,
+    PaymentComponent,
+    StrumentiCardComponent,
+    DetailsComponent
   ],
   imports: [
     BrowserModule,
