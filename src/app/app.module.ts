@@ -22,6 +22,7 @@ import { TransferComponent } from './components/payment/transfer/transfer.compon
 import { ValutazioniComponent } from './components/valutazioni/valutazioni.component';
 import { HttpClientModule } from '@angular/common/http';
 import { OrdineComponent } from './components/ordine/ordine.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { OrdineComponent } from './components/ordine/ordine.component';
     TransferComponent,
     ValutazioniComponent,
     OrdineComponent,
+    CarouselComponent,
   ],
   imports: [
     BrowserModule,

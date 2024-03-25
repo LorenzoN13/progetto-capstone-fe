@@ -20,8 +20,8 @@ export class LogSystemService {
   jwt:JwtHelperService=new JwtHelperService();
 
   APIUser:string=`${environment.API}/utenti`
-  APIRegister:string=`${environment.API}/register`;
-  APILogin:string=`${environment.API}/login`;
+  APIRegister:string=`${environment.API}/auth/register`;
+  APILogin:string=`${environment.API}/auth/login`;
 
 
   constructor(
