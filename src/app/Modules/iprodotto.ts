@@ -1,4 +1,5 @@
 export interface Iprodotto {
+  id: number;
   titolo: string;
   descrizione: string;
   prezzo: number;

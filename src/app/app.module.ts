@@ -23,6 +23,8 @@ import { ValutazioniComponent } from './components/valutazioni/valutazioni.compo
 import { HttpClientModule } from '@angular/common/http';
 import { OrdineComponent } from './components/ordine/ordine.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
+import { PaginatorComponent } from './components/paginator/paginator.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,7 @@ import { CarouselComponent } from './components/carousel/carousel.component';
     ValutazioniComponent,
     OrdineComponent,
     CarouselComponent,
+    PaginatorComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,6 +55,7 @@ import { CarouselComponent } from './components/carousel/carousel.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

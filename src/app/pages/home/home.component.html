@@ -4,5 +4,21 @@
     <app-carousel></app-carousel>
   </div>
 
+  <div class="card-container" *ngIf="prodotti.length > 0">
+
+    <div *ngFor="let prodotto of prodotti">
+      <app-strumenti-card [prodotto]="prodotto"></app-strumenti-card>
+      <app-add-to-shop [prodotto]="prodotto"></app-add-to-shop>
+    </div>
+
+  </div>
+
+  <div class="paginator-container">
+    <app-paginator
+        [currentPage]="currentPage"
+        (pageChange)="onPageChange($event)"
+    ></app-paginator>
+</div>
+
 
 </div>

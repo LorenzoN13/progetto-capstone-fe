@@ -1,0 +1,13 @@
+<div class="paginator d-flex align-items-center">
+  <div class="paginator__prev">
+    <span class="button paginate-button" [ngClass]="{ 'paginate-button--disabled': currentPage <= 1 }" (click)="goToPreviousPage()">
+      <fa-icon [icon]="faChevronLeft" class="paginate-button__icon" [ngClass]="{ 'paginate-button__icon--disabled': currentPage <= 1 }"></fa-icon>
+    </span>
+  </div>
+  <div class="paginator__page">
+    <input type="number" class="text-input paginator__page__go-to-input" [(ngModel)]="currentPage" (input)="goToPage($event)">
+  </div>
+  <div class="paginator__next">
+    <span class="button paginate-button" (click)="goToNextPage()"><fa-icon [icon]="faChevronRight" class="paginate-button__icon"></fa-icon></span>
+  </div>
+</div>

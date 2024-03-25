@@ -2,6 +2,7 @@ import { Iprodotto } from "./iprodotto";
 
 export class Prodotto implements Iprodotto{
  constructor(
+  public id:number,
   public titolo: string,
   public descrizione: string,
   public prezzo: number,
@@ -11,6 +12,7 @@ export class Prodotto implements Iprodotto{
   public categoria: string,
   public quantita: number,
   public prezzoScontato?: number,
-  public percentualeSconto?: number
+  public percentualeSconto?: number,
+  
  ){}
 }

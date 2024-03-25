@@ -1,1 +1,20 @@
-<p>strumenti-card works!</p>
+<div class="card-container">
+  <div class="card mb-1">
+    <button *ngIf="isLogged" class="addToWishList" (click)="addToWishList(beer.id)">
+      <fa-icon [icon]="isInWishlist ? ['fas', 'heart'] : ['far', 'heart']" id="icon" class="paginate-button__icon"></fa-icon>
+    </button>
+
+    <a class="d-block text-center"[routerLink]="['/details/'+ prodotto.id]">
+      <img  [src]="prodotto.immagineUrl || 'https://images.punkapi.com/v2/keg.png'" class="card__img" alt="beer image">
+      <div class="card__data">
+          <p class="card__data--title">{{ prodotto.titolo }}</p>
+          <p class="card__data--text">Descrizione: {{prodotto.descrizione }}</p>
+          <p class="card__data--text">Brand: {{prodotto.brand }}</p>
+          <p class="card__data--text">Colore: {{prodotto.colore }}</p>
+          <p class="card__data--text">Categoria: {{prodotto.categoria }}</p>
+          <p class="card__data--text">Quantita: {{prodotto.quantita }}</p>
+          <p class="card__data--text">Prezzo: {{ prodotto.prezzo| currency:'EUR' }}</p>
+      </div>
+    </a>
+  </div>
+</div>

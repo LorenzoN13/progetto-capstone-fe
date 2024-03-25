@@ -1,0 +1,39 @@
+
+
+.paginator {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 0.3rem;
+
+  &__page {
+    &__go-to-input {
+      text-align: center;
+      width: 2rem;
+    }
+  }
+}
+
+.paginate-button {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  height: 25px;
+  justify-content: center;
+  width: 2rem;
+
+  &--disabled {
+    background-color: black;
+    pointer-events: none;
+  }
+
+  &__icon {
+    color: black;
+    font-size: 1.2rem;
+
+    &--disabled {
+      color: black;
+    }
+  }
+}
