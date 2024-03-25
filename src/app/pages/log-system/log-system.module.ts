@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { LogSystemRoutingModule } from './log-system-routing.module';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LogSystemComponent } from './log-system.component';
 
@@ -20,7 +20,6 @@ import { LogSystemComponent } from './log-system.component';
     LogSystemRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
   ]
 })
 export class LogSystemModule { }

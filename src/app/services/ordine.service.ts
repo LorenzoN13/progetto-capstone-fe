@@ -13,7 +13,7 @@ export class OrdineService {
 
   apiUrlShop= `${environment.API}/ordini`;
   totalCart = new BehaviorSubject<number>(0);
-  cart$ = this.totalCart.asObservable();
+  ordine$ = this.totalCart.asObservable();
   allitemSubject : BehaviorSubject<Iordine []|null> = new BehaviorSubject<Iordine []|null>(null);
   allItem$ = this.allitemSubject.asObservable();
 

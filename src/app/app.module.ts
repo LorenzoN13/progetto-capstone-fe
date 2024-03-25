@@ -24,7 +24,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { OrdineComponent } from './components/ordine/ordine.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { PaginatorComponent } from './components/paginator/paginator.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ListComponent } from './pages/list/list.component';
+import { far } from '@fortawesome/free-regular-svg-icons';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+import { CartIconComponent } from './components/header/cart-icon/cart-icon.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +53,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     OrdineComponent,
     CarouselComponent,
     PaginatorComponent,
+    ListComponent,
+    CartIconComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,9 +62,14 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FontAwesomeModule,
+    FontAwesomeModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(library: FaIconLibrary) {
+    library.addIconPacks(far,fas,fab)
+  }
+}

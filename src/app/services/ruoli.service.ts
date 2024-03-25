@@ -16,7 +16,7 @@ export class RuoliService {
     this.logged();
   }
 
-  API:string=`${environment.API}/roles`
+  API:string=`${environment.API}`
 
   getRoleByUserID(userID:string):Observable<Iruolo|undefined>{
     return this.http.get<Iruolo[]>(this.API).pipe(map(rolesArr=>rolesArr.find(element=>{
@@ -35,7 +35,7 @@ export class RuoliService {
   }
 
   upgradeUserRole(userRole:Iruolo):Observable<Iruolo>{
-    return this.http.put<Iruolo>(`${this.API}/${userRole.id}`,userRole)
+    return this.http.put<Iruolo>(`${this.API}/${userRole.id}/promoteToAdmin`,userRole)
     .pipe(tap((data)=>{
       this.loggedRoleSub.next(data);
       localStorage.setItem('role', JSON.stringify(data));
@@ -43,7 +43,7 @@ export class RuoliService {
   }
 
   deleteUserRole(id:string):Observable<Iruolo>{
-    return this.http.delete<Iruolo>(`${this.API}/${id}`);
+    return this.http.delete<Iruolo>(`${this.API}/${id}//promoteToAdmin`);
   }
 
   logged(){

@@ -1,6 +1,6 @@
 <div class="card-container">
   <div class="card mb-1">
-    <button *ngIf="isLogged" class="addToWishList" (click)="addToWishList(beer.id)">
+    <button *ngIf="isLogged" class="addToWishList" (click)="addToWishList(prodotto.id)">
       <fa-icon [icon]="isInWishlist ? ['fas', 'heart'] : ['far', 'heart']" id="icon" class="paginate-button__icon"></fa-icon>
     </button>
 
