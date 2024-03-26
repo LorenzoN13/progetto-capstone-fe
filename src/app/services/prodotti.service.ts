@@ -19,7 +19,7 @@ export class ProdottiService {
     return this.http.get<Iprodotto[]>(this.apiUrl);
   }
 
-  getProdsottoById(id:number):Observable<Iprodotto>{
+  getProdottoById(id:number):Observable<Iprodotto>{
     return this.http.get<Iprodotto>(`${this.apiUrl}/${id}`);
   }
 

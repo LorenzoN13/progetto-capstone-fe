@@ -45,7 +45,7 @@ export class LogSystemService {
     .pipe(tap(data=>{
       this.authorized.next(data);
       this.autoLogOut(data.accessToken)
-      localStorage.setItem('user', JSON.stringify(data))
+      localStorage.setItem('utente', JSON.stringify(data))
     }))
   }
 

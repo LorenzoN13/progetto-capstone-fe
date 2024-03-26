@@ -42,7 +42,7 @@ export class OrdineService {
   }
 
   addToShop(userId: number, prodotto: Iordinearticolo) {
-    let numeroprdottivenduti = 1; // Valore predefinito
+    let numeroprdottivenduti = 1; 
     if (prodotto.quantita !== undefined && prodotto.quantita > 1) {
       numeroprdottivenduti = prodotto.quantita;
     }

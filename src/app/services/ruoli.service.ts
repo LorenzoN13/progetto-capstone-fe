@@ -43,11 +43,11 @@ export class RuoliService {
   }
 
   deleteUserRole(id:string):Observable<Iruolo>{
-    return this.http.delete<Iruolo>(`${this.API}/${id}//promoteToAdmin`);
+    return this.http.delete<Iruolo>(`${this.API}/${id}/promoteToAdmin`);
   }
 
   logged(){
-    let localRole:string|null=localStorage.getItem('role');
+    let localRole:string|null=localStorage.getItem('ruolo');
     if (!localRole) return;
 
     let userRole:Iruolo=JSON.parse(localRole);
