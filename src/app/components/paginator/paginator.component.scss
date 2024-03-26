@@ -1,5 +1,3 @@
-
-
 .paginator {
   align-items: center;
   display: flex;
@@ -24,16 +22,16 @@
   width: 2rem;
 
   &--disabled {
-    background-color: black;
+    background-color: red;
     pointer-events: none;
   }
 
   &__icon {
-    color: black;
+    color: red;
     font-size: 1.2rem;
 
     &--disabled {
-      color: black;
+      color: red;
     }
   }
 }

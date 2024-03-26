@@ -1,18 +1,38 @@
 .cont{
   box-sizing: border-box;
   margin: 0 auto;
+  max-height: 100vh;
 }
+
 
 .card-container {
   padding-top: 10px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
-  margin: 1rem 0rem;
+  margin: 0 2.5%;
 
   @media (min-width: 768px) {
     grid-template-columns: repeat(5, 1fr);
   }
+}
+.addToWishList{
+  margin-left: 35px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #0a2f69;
+  color: #F6B74B;
+  font-size: large;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+h4{
+  margin-left: 2.5%;
+  margin-top: 12px;
+  margin-bottom: 0;
 }
 
 

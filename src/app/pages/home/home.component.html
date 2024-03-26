@@ -1,22 +1,13 @@
 <div class="cont">
-
   <div class="contaiener-carousel">
     <app-carousel></app-carousel>
   </div>
 
+  <h4>Articoli in evidenza</h4>
   <div class="card-container" *ngIf="prodotti.length > 0">
-
-    <div *ngFor="let prodotto of prodotti">
+    <div *ngFor="let prodotto of prodotti" class="mt-3">
       <app-strumenti-card [prodotto]="prodotto"></app-strumenti-card>
       <app-add-to-shop ></app-add-to-shop>
     </div>
-
-  </div>
-
-  <div class="paginator-container">
-    <app-paginator
-        [currentPage]="currentPage"
-        (pageChange)="onPageChange($event)"
-    ></app-paginator>
   </div>
 </div>

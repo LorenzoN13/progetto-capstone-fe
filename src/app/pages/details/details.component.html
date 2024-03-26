@@ -1,1 +1,31 @@
-<p>details works!</p>
+<div *ngIf="prodotto">
+  <div class="singleCard">
+    <button *ngIf="isLogged && admin" class="deleteBeer"(click)="deleteprodotto(prodotto.id)">
+      <fa-icon [icon]="[  'fas', 'trash-arrow-up']" class="trash"></fa-icon>
+    </button>
+    <div class="d-md-flex">
+      <div>
+        <img [src]="prodotto.immagineUrl" >
+      </div>
+      <div>
+        <h2 class="text-center">{{prodotto.titolo}}</h2>
+        <h5 class="text-center text-secondary">{{prodotto.brand}}</h5>
+        <h5 class="px-3">{{prodotto.categoria}}</h5>
+        <h5 class="px-3">{{prodotto.descrizione}}</h5>
+        <h5 class="px-3">{{prodotto.colore}}</h5>
+        <h5 class="px-3">{{prodotto.categoria}}</h5>
+        <h5 class="px-3">{{prodotto.quantita}}</h5>
+        <div class="d-flex align-items-center">
+            <h5 class="w-50 mt-3 ms-3"><strong>Price: {{prodotto.prezzo | currency:"EUR"}}</strong></h5>
+          <div class="d-flex justify-content-end align-items-center detFoot w-100 ms-3 mt-3">
+            <button *ngIf="isLogged && admin" [routerLink]="['/edit/'+ prodotto.id]">EDIT</button>
+            <div class="d-flex justify-content-end align-items-center">
+              <button class="button" *ngIf="isLogged" (click)="addTolist(prodotto.id)">WISH</button>
+              <app-add-to-shop [prodotto]="prodotto" class="mt-2"></app-add-to-shop>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

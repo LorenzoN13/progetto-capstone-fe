@@ -18,7 +18,7 @@ export class ListService {
     return storedWishlist ? JSON.parse(storedWishlist) : [];
   }
 
-  private updateWishlistInLocalStorage(items: IListItem[]): void {
+  updateWishlistInLocalStorage(items: IListItem[]): void {
     localStorage.setItem(this.listKey, JSON.stringify(items));
   }
 
