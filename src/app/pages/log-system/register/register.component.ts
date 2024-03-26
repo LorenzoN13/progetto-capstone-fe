@@ -51,7 +51,13 @@ export class RegisterComponent {
     catchError(err => {
       // Gestione degli errori
       this.loading = false;
-      this.emailExist = true;
+      if (err.status === 409) {
+        // Se il backend restituisce un errore 409 (conflitto), significa che l'email esiste già
+        this.emailExist = true;
+      } else {
+        // Altrimenti, mostra un messaggio generico di errore
+        console.error('Errore durante la registrazione:', err);
+      }
       throw err;
     })
   ).subscribe(data => {

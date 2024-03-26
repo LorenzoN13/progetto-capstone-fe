@@ -1,1 +1,25 @@
-<p>footer works!</p>
+<div class="bg-footer justify-content-between">
+
+  <div class="footer-menu pt-1">
+    <a routerLink="/**"><img class="scarica rounded " src="../../../assets/imgs/scarica-app.png" alt=""></a>
+    <a routerLink="/**"><img class="scarica rounded " src="../../../assets/imgs/scarica-2.png"alt=""></a>
+ </div>
+
+  <div class="menu-servizi d-flex justify-content-center mt-3">
+    <a routerLink="/servizioclienti">
+      <p class="me-3 ">Servizio Clienti</p>
+    </a>
+    <a routerLink="spedizioni">
+      <p class="me-3 ">Spedizioni</p>
+    </a>
+    <a routerLink="rimborsi">
+      <p class="me-3 ">Resi e Rimborsi</p>
+    </a>
+  </div>
+
+  <div class="menu-icons d-flex justify-content-center align-items-center h3 pt-1 me-2 ">
+    <a routerLink="/**" class=" icons "><fa-icon [icon]="['fab','facebook']" class="paginate-button__icon h3"></fa-icon></a>
+    <a routerLink="/**"class=" icons "><fa-icon [icon]="['fab','instagram']" class="paginate-button__icon"></fa-icon></a>
+    <a routerLink="/**" class=" icons "><fa-icon [icon]="['fab','youtube']" class="paginate-button__icon h3"></fa-icon></a>
+  </div>
+</div>

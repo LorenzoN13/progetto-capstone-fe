@@ -15,8 +15,8 @@ export class ProdottiService {
 
   constructor(private http: HttpClient) { }
 
-  getProdotti():Observable<Iprodotto[]> {
-    return this.http.get<Iprodotto[]>(this.apiUrl);
+  getProdotti():Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrl);
   }
 
   getProdottoById(id:number):Observable<Iprodotto>{

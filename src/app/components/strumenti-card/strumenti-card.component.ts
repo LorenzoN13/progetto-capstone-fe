@@ -17,8 +17,6 @@ export class StrumentiCardComponent {
   userId!: number | undefined;
   listItems: IListItem[] | null = [];
   isInWishlist: boolean = false;
-  wishlistSvc: any;
-
 
   constructor(
     private logService: LogSystemService,
@@ -29,14 +27,14 @@ export class StrumentiCardComponent {
       this.userId = user?.utente.id;
       this.isLogged = !!user;
     });
+    this.listSvc = listSvc; // Inizializza wishlistSvc con listSvc
   }
+
   ngOnInit() {
     this.listSvc.wishlistItems.subscribe((items) => {
       this.listItems = items;
-      console.log(this.listItems);
       this.checkIfInWishlist();
     });
-    console.log(this.prodotto);
   }
 
   addToWishList(prodottoId: number): void {
@@ -50,29 +48,22 @@ export class StrumentiCardComponent {
       (item) => item.prodottoId === prodottoId
     );
 
-    if (isProductInWishlist) {
-      const existingWishlistItem = this.listItems.find(
-        (item) => item.prodottoId === prodottoId
-      );
-    } else {
-      this.wishlistSvc
-        .addToWishList(prodottoId, String(this.userId))
-        .subscribe((data: any) => {
-          console.log('Birra aggiunta alla lista dei desideri:', data);
-        });
-        this.isInWishlist = true;
+    if (!isProductInWishlist) {
+      this.listSvc.addToWishlist(prodottoId, Number(this.userId));
+      console.log('Prodotto aggiunto alla lista dei desideri');
+      this.isInWishlist = true;
     }
-    this.fetchWishlist();
   }
 
   fetchWishlist() {
-    this.wishlistSvc.getWishlist(String(this.userId)).subscribe({
+    if (!this.userId) return;
+    this.listSvc.getWishlist().subscribe({
       next: (data: any) => {
         this.listItems = data;
       },
       error: (error: any) => {
         console.error('Errore nel recupero della lista dei desideri:', error);
-      },
+      }
     });
   }
 

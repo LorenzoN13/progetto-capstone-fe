@@ -1,0 +1,92 @@
+.bg-footer{
+  background-color: black;
+  position: fixed;
+  bottom: 0%;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+//DIMENSIONI FOTO LOGO
+
+.footer-container-logo{
+  height: 15vh;
+}
+
+// BOTTONI SCARICA APP
+.scarica{
+  height: 30px;
+  width: 100px;
+}
+
+// BOTTONI servizi clienti, spedizioni, resi e rimborsi
+li{
+  list-style-type:none;
+}
+
+//COLORI FOOTER
+a {
+  color:  white;
+  text-decoration: none;
+  font-size: 1em;
+  margin-left: 20px;
+}
+
+div{
+  color: #FEEFDE;
+}
+.icons{
+  color:  white;
+}
+
+// BRACKPOINTS
+@media only screen and (max-width: 600px) {
+  .footer-container-logo{
+    height: 35vh;
+    display: flex;
+    justify-content: center;
+  }
+  .footer-menu{
+    justify-content: center;
+    text-align: center;
+    text-transform: uppercase;
+
+  }
+}
+@media only screen and (min-width: 600px) {
+
+  .footer-menu{
+    display: inline-block;
+    display: flex;
+  }
+
+  .menu-scarica{
+    display: flex;
+
+  }
+
+  .bg-footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+
+  }
+}
+
+@media only screen and (max-width: 850px) {
+
+  .bg-footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+  }
+
+  .footer-menu, .menu-icons, .menu-servizi{
+    margin: 0%;
+    height: 4.5vh;
+  }
+}
+

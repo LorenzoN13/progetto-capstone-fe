@@ -11,70 +11,65 @@ import { IutenteAuth } from '../../Modules/iutente-auth';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent implements OnInit{
-prodotti: Iprodotto[] = [];
-allProdotti: Iprodotto[] = [];
-islogged:boolean = false;
-utenteId!: number|undefined;
-currentPage: number = 1;
-itemsPerPage: number = 25;
+  prodotti: Iprodotto[] = [];
+  allProdotti: Iprodotto[] = [];
+  islogged: boolean = false;
+  utenteId: number | undefined;
+  currentPage: number = 1;
+  itemsPerPage: number = 25;
 
-constructor(
-  private prodottiService: ProdottiService,
-  private paginatorService: PaginatorService,
-  private logService: LogSystemService,
-){}
+  constructor(
+    private prodottiService: ProdottiService,
+    private paginatorService: PaginatorService,
+    private logService: LogSystemService,
+  ) {}
 
-ngOnInit(): void {
-  this.logService.utente$.subscribe((user:IutenteAuth|null)=>{
-    this.islogged = !!user
-    this.utenteId = user?.utente.id
-  })
-  this.fetchProdotti();
+  ngOnInit(): void {
+    this.logService.utente$.subscribe((user: IutenteAuth | null) => {
+      this.islogged = !!user
+      this.utenteId = user?.utente.id
+    })
+    this.fetchProdotti();
+  }
 
-}
+  fetchProdotti(): void {
+    this.prodottiService.getProdotti().subscribe({
+      next: (response: any) => {
+        if (response && response.obj && response.obj.content) {
+          this.prodotti = response.obj.content;
+          this.updatePage(); // Aggiorna la paginazione dopo aver assegnato i dati
+        } else {
+          console.error('Struttura dati non valida nella risposta del server.');
+        }
+      },
+      error: (error) => {
+        console.error('Errore nel recupero dei prodotti:', error);
+      }
+    });
+  }
 
-fetchProdotti(): void {
-  this.prodottiService.getProdotti().subscribe({
-    next: (data: any[]) => {
-      this.allProdotti = data;
-      this.updatePage();
-      console.log(this.allProdotti)
-    },
-    error: (error) => {
-      console.error('Errore nel recupero dei prodotti:', error);
+  updatePage(): void {
+    this.prodotti = this.paginatorService.paginate(this.prodotti, this.currentPage, this.itemsPerPage);
+  }
+
+  onPageChange(page: number): void {
+    this.currentPage = page;
+    this.updatePage();
+  }
+
+  searchProdottiByName(nome: string): void {
+    if (!nome) {
+      this.prodotti = this.allProdotti.slice();
+    } else {
+      this.prodotti = this.allProdotti.filter((prodotto: Iprodotto) =>
+        prodotto.titolo.toLowerCase().includes(nome.toLowerCase())
+      );
     }
-  });
-}
-
-updatePage(): void {
-  if (this.prodottiService.prodottoTitolo) {
-    this.prodotti = this.allProdotti.filter((beer: any) =>
-      beer.nome.toLowerCase().includes(this.prodottiService.prodottoTitolo.toLowerCase())
-    );
-  } else {
-    this.prodotti = this.paginatorService.paginate(this.allProdotti, this.currentPage, this.itemsPerPage);
+    this.updatePage();
   }
-}
 
-onPageChange(page: number): void {
-  this.currentPage = page;
-  this.updatePage();
-}
-
-searchProdottiByName(nome: string): void {
-  if (!nome) {
-    this.prodotti = this.allProdotti.slice();
-    return;
+  handleBeerNameEvent(nome: string): void {
+    this.prodottiService.setProdottoName(nome);
+    this.updatePage();
   }
-  // Filtra le birre in base al nome
-  this.prodotti = this.allProdotti.filter((beer: any) =>
-    beer.nome.toLowerCase().includes(nome.toLowerCase())
-  );
-  this.updatePage();
-}
-
-handleBeerNameEvent(nome: string): void {
-  this.prodottiService.setProdottoName(nome);
-  this.updatePage();
-}
 }
