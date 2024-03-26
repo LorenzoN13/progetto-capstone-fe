@@ -67,7 +67,7 @@ export class LogSystemService {
     this.router.navigate(['/home']);
   }
 
-  deleteAccount(id:string):Observable<Iutente>{
+  deleteAccount(id:number):Observable<Iutente>{
     return this.http.delete<Iutente>(`${this.APIUser}/${id}`);
   }
 

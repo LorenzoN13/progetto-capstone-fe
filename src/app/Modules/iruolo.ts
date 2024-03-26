@@ -1,5 +1,5 @@
 export interface Iruolo {
-  utenteID:string;
+  utenteID:number;
   ruolo:string;
-  id?:string,
+  id?:number,
 }

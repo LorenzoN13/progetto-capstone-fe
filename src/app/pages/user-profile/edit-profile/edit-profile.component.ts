@@ -26,13 +26,13 @@ export class EditProfileComponent {
   constructor(
     private fb:FormBuilder,
     private LSS:LogSystemService,
-    private RolesSVC:RuoliService
+    private RolesSvc:RuoliService
     ){
     this.LSS.utente$.subscribe(user =>{
       if(!user)  return
       this.userAuth=user
     });
-    this.RolesSVC.userRole$.subscribe(role =>{
+    this.RolesSvc.userRole$.subscribe(role =>{
       if(!role) return;
       this.userRole=role;
       this.admin=role.ruolo==`admin`?true:false
@@ -109,7 +109,7 @@ export class EditProfileComponent {
     });
     if (password==`admin`) {
       this.userRole.ruolo=`admin`;
-      this.RolesSVC.upgradeUserRole(this.userRole).subscribe(()=>{
+      this.RolesSvc.upgradeUserRole(this.userRole).subscribe(()=>{
         Swal.fire({
           position: "top-end",
           icon: "success",

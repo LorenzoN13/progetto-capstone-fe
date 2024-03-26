@@ -9,13 +9,13 @@ import { RuoliService } from '../../services/ruoli.service';
 })
 export class AdminGuard {
   constructor(
-    private RolesSVC:RuoliService,
+    private RolesSvc:RuoliService,
     private router:Router
     ){}
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return this.RolesSVC.userRole$.pipe(map(userRole=>{
+    return this.RolesSvc.userRole$.pipe(map(userRole=>{
         if(!userRole) return false;
         let admin= userRole.ruolo==`admin`?true:false
         if(!admin)this.router.navigate([`/`]);

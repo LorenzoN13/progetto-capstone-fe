@@ -1,8 +1,10 @@
 export interface Iutente {
-  id:string;
-  nome:string;
-  cognome:string;
-  username:string
-  email:string;
-  password:string;
+  avatar: string | null;
+  cognome: string;
+  email: string;
+  id: number;
+  nome: string;
+  password: string;
+  ruoli: string[];
+  username: string;
 }

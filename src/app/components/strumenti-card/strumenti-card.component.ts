@@ -14,7 +14,7 @@ export class StrumentiCardComponent {
   @Input() prodotto!: Iprodotto;
   loggedInUser: IutenteAuth | null = null;
   isLogged: boolean = false;
-  userId!: string | undefined;
+  userId!: number | undefined;
   listItems: IListItem[] | null = [];
   isInWishlist: boolean = false;
   wishlistSvc: any;

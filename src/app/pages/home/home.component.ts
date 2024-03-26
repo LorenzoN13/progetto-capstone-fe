@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit{
 prodotti: Iprodotto[] = [];
 allProdotti: Iprodotto[] = [];
 islogged:boolean = false;
-utenteId!: string|undefined;
+utenteId!: number|undefined;
 currentPage: number = 1;
 itemsPerPage: number = 25;
 
@@ -41,7 +41,7 @@ fetchProdotti(): void {
       console.log(this.allProdotti)
     },
     error: (error) => {
-      console.error('Errore nel recupero delle birre:', error);
+      console.error('Errore nel recupero dei prodotti:', error);
     }
   });
 }

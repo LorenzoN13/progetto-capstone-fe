@@ -35,24 +35,40 @@ export class RegisterComponent {
     })
   }
 
-  submit(){
-    this.form.value.nome= this.form.value.nome.charAt(0).toUpperCase()+this.form.value.nome.slice(1).toLowerCase()
-    this.form.value.cognome= this.form.value.cognome.charAt(0).toUpperCase()+this.form.value.cognome.slice(1).toLowerCase()
+  submit() {
+  // Formattazione dei campi "nome" e "cognome"
+  this.form.value.nome = this.form.value.nome.charAt(0).toUpperCase() + this.form.value.nome.slice(1).toLowerCase();
+  this.form.value.cognome = this.form.value.cognome.charAt(0).toUpperCase() + this.form.value.cognome.slice(1).toLowerCase();
 
-    this.loading=true;
-    delete this.form.value.confirmPassword;
+  // Impostazione del flag `loading` su `true`
+  this.loading = true;
 
-    this.LSS.register(this.form.value).pipe(catchError(err=>{
-      this.loading=false
-      this.emailExist=true
-      throw err
-    })).subscribe(data=>{
-      this.RolesSVC.setRoleNewUser(data.utente.id,`customer`).subscribe(()=>{
-        this.router.navigate(['/LogSystem/login']);
-        this.loading=false;
-      })
-    });
-  }
+  // Rimozione del campo `confirmPassword`
+  delete this.form.value.confirmPassword;
+
+  // Registrazione del nuovo utente
+  this.LSS.register(this.form.value).pipe(
+    catchError(err => {
+      // Gestione degli errori
+      this.loading = false;
+      this.emailExist = true;
+      throw err;
+    })
+  ).subscribe(data => {
+    // Sottoscrizione alla risposta della registrazione
+    if (data && data.utente && data.utente.id) {
+      // Controllo se sono stati ricevuti dati utente validi
+      console.log('Registrazione completata con successo. ID utente:', data.utente.id);
+      // Reindirizzamento alla pagina di login
+      this.router.navigate(['/LogSystem/login']);
+    } else {
+      // Gestione dell'errore quando i dati utente sono mancanti o non validi
+      console.error('Errore: dati utente non validi', data);
+    }
+    // Impostazione del flag `loading` su `false`
+    this.loading = false;
+  });
+}
 
   isValid(nameForm:string):boolean|undefined{
     return this.form.get(nameForm)?.valid

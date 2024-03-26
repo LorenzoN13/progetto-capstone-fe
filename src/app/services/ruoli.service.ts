@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
+import { environment } from '../../environments/environment.development';
 import { BehaviorSubject, Observable, map, tap } from 'rxjs';
 import { Iruolo } from '../Modules/iruolo';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
@@ -16,9 +16,9 @@ export class RuoliService {
     this.logged();
   }
 
-  API:string=`${environment.API}`
+  API:string=`${environment.API}/roles`
 
-  getRoleByUserID(userID:string):Observable<Iruolo|undefined>{
+  getRoleByUserID(userID:number):Observable<Iruolo|undefined>{
     return this.http.get<Iruolo[]>(this.API).pipe(map(rolesArr=>rolesArr.find(element=>{
       if(element.utenteID==userID){
         localStorage.setItem('role', JSON.stringify(element))
@@ -35,19 +35,19 @@ export class RuoliService {
   }
 
   upgradeUserRole(userRole:Iruolo):Observable<Iruolo>{
-    return this.http.put<Iruolo>(`${this.API}/${userRole.id}/promoteToAdmin`,userRole)
+    return this.http.put<Iruolo>(`${this.API}/${userRole.id}`,userRole)
     .pipe(tap((data)=>{
       this.loggedRoleSub.next(data);
       localStorage.setItem('role', JSON.stringify(data));
     }));
   }
 
-  deleteUserRole(id:string):Observable<Iruolo>{
-    return this.http.delete<Iruolo>(`${this.API}/${id}/promoteToAdmin`);
+  deleteUserRole(id:number):Observable<Iruolo>{
+    return this.http.delete<Iruolo>(`${this.API}/${id}`);
   }
 
   logged(){
-    let localRole:string|null=localStorage.getItem('ruolo');
+    let localRole:string|null=localStorage.getItem('role');
     if (!localRole) return;
 
     let userRole:Iruolo=JSON.parse(localRole);
