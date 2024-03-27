@@ -42,10 +42,10 @@ export class EditProfileComponent {
   ngOnInit(){
     if(!this.userAuth) return;
     this.form = this.fb.group({
-      nome: this.fb.control(this.userAuth?.utente.nome,[Validators.required]),
-      congnome: this.fb.control(this.userAuth?.utente.cognome,[Validators.required]),
-      email: this.fb.control(this.userAuth?.utente.email,[Validators.email]),
-      username: this.fb.control(this.userAuth?.utente.username,[Validators.required]),
+      nome: this.fb.control(this.userAuth?.obj.nome,[Validators.required]),
+      congnome: this.fb.control(this.userAuth?.obj.cognome,[Validators.required]),
+      email: this.fb.control(this.userAuth?.obj.email,[Validators.email]),
+      username: this.fb.control(this.userAuth?.obj.username,[Validators.required]),
       password: this.fb.control(null,[Validators.required,Validators.pattern(this.regExPassword)]),
 
     })
@@ -80,8 +80,8 @@ export class EditProfileComponent {
   submit(){
     this.loading=true;
     if(!this.userAuth) return
-    this.form.value.id=this.userAuth.utente.id
-    this.userAuth.utente=this.form.value
+    this.form.value.id=this.userAuth.obj.id
+    this.userAuth.obj=this.form.value
     this.LSS.updateUser(this.userAuth).pipe(catchError(err=>{
       this.loading=false
       throw err;
@@ -89,7 +89,7 @@ export class EditProfileComponent {
     .subscribe(data=>{
       if(!this.userAuth) return;
       this.loading=false;
-      this.userAuth.utente=data;
+      this.userAuth.obj=data;
       localStorage.setItem('user', JSON.stringify(this.userAuth))
       window.location.reload();
     })

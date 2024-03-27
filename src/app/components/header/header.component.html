@@ -21,7 +21,7 @@
       </a>
       <a class="line d-flex align-items-center" routerLink="/userprofile">
         <fa-icon [icon]="['far','user']" class="paginate-button__icon h4 log-in-icon mt-2"></fa-icon>
-        <p *ngIf="isLogged" class="d-none d-lg-block line m-0 ms-2">{{user.utente.nome}}</p>
+        <p *ngIf="isLogged" class="d-none d-lg-block line m-0 ms-2">{{user.obj.nome}}</p>
         <p *ngIf="!isLogged" class="m-0 me-4 ms-2 fs-5 ">Login</p>
       </a>
     </div>

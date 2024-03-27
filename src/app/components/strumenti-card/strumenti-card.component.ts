@@ -24,7 +24,7 @@ export class StrumentiCardComponent {
   ) {
     this.logService.utente$.subscribe((user: IutenteAuth | null) => {
       this.loggedInUser = user;
-      this.userId = user?.utente.id;
+      this.userId = user?.obj.id;
       this.isLogged = !!user;
     });
     this.listSvc = listSvc; // Inizializza wishlistSvc con listSvc
@@ -39,7 +39,7 @@ export class StrumentiCardComponent {
 
   addToWishList(prodottoId: number): void {
     this.fetchWishlist();
-    if (!this.loggedInUser || !this.loggedInUser.utente.id) {
+    if (!this.loggedInUser || !this.loggedInUser.obj.id) {
       console.error('Utente non autorizzato');
       return;
     }
@@ -69,7 +69,7 @@ export class StrumentiCardComponent {
 
   checkIfInWishlist(): void {
     if (!this.listItems) return;
-    if (this.loggedInUser && this.loggedInUser.utente.id) {
+    if (this.loggedInUser && this.loggedInUser.obj.id) {
       const isProductInWishlist = this.listItems.some(item => item.prodottoId === this.prodotto.id);
       this.isInWishlist = isProductInWishlist;
     }

@@ -25,7 +25,7 @@ export class CartIconComponent {
   ngOnInit() {
     this.LSS.utente$.subscribe((user: IutenteAuth | null) => {
       this.loggedInUser = user;
-      this.userId = Number(user?.utente.id)
+      this.userId = Number(user?.obj.id)
       this.isLogged = !!user;
     });
     this.fetchShopUpdate(this.userId);

@@ -27,7 +27,7 @@ export class UserProfileComponent {
   ){
     this.LSS.utente$.subscribe(userAuth =>{
       this.userAuth=userAuth;
-      this.user=this.userAuth?.utente;
+      this.user=this.userAuth?.obj;
     });
   }
 

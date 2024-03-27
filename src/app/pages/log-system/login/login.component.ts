@@ -50,6 +50,6 @@ export class LoginComponent {
       }
       throw error
     })
-    ).subscribe(data=>this.RolesSVC.getRoleByUserID(data.utente.id).subscribe())
+    ).subscribe(data=>this.RolesSVC.getRoleByUserID(data.obj.id).subscribe())
   }
 }

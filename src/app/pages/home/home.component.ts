@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit{
   ngOnInit(): void {
     this.logService.utente$.subscribe((user: IutenteAuth | null) => {
       this.islogged = !!user
-      this.utenteId = user?.utente.id
+      this.utenteId = user?.obj.id
     })
     this.fetchProdotti();
   }

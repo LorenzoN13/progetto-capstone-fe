@@ -16,17 +16,14 @@ export class RuoliService {
     this.logged();
   }
 
-  API:string=`${environment.API}/roles`
+  API:string=`${environment.API}/utenti`
 
-  getRoleByUserID(userID:number):Observable<Iruolo|undefined>{
-    return this.http.get<Iruolo[]>(this.API).pipe(map(rolesArr=>rolesArr.find(element=>{
-      if(element.utenteID==userID){
-        localStorage.setItem('role', JSON.stringify(element))
-        this.loggedRoleSub.next(element);
-        return element
-      }
-      return undefined
-    })))
+  getRoleByUserID(userID: number): Observable<string | undefined> {
+    return this.http.get<any>(`${this.API}/${userID}`).pipe(
+      map((user: any) => {
+        return user.ruoli;
+      })
+    );
   }
 
   setRoleNewUser(userID:string,role:string):Observable<Iruolo>{

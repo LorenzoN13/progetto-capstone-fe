@@ -37,7 +37,7 @@ export class LogSystemService {
 
   updateUser(utente:IutenteAuth):Observable<Iutente>{
     this.authorized.next(utente);
-    return this.http.put<Iutente>(`${this.APIUser}/${utente.utente.id}`, utente.utente)
+    return this.http.put<Iutente>(`${this.APIUser}/${utente.obj.id}`, utente.obj)
   }
 
   login(utente:Ilogin):Observable<IutenteAuth>{

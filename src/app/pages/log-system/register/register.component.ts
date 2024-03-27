@@ -62,9 +62,9 @@ export class RegisterComponent {
     })
   ).subscribe(data => {
     // Sottoscrizione alla risposta della registrazione
-    if (data && data.utente && data.utente.id) {
+    if (data && data.obj && data.obj.id) {
       // Controllo se sono stati ricevuti dati utente validi
-      console.log('Registrazione completata con successo. ID utente:', data.utente.id);
+      console.log('Registrazione completata con successo. ID utente:', data.obj.id);
       // Reindirizzamento alla pagina di login
       this.router.navigate(['/LogSystem/login']);
     } else {

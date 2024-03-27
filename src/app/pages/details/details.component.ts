@@ -2,31 +2,31 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Iordine } from '../../Modules/iordine';
 import { Iprodotto } from '../../Modules/iprodotto';
 import { ProdottiService } from './../../services/prodotti.service';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LogSystemService } from '../../services/log-system.service';
 import { ListService } from '../../services/list.service';
 import { OrdineService } from '../../services/ordine.service';
 import { RuoliService } from '../../services/ruoli.service';
 import { IutenteAuth } from '../../Modules/iutente-auth';
-import { EMPTY, Observable, catchError, switchMap, take } from 'rxjs';
 
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
   styleUrl: './details.component.scss'
 })
-export class DetailsComponent {
+export class DetailsComponent{
+
   admin!:boolean
   isLogged: boolean = false;
   prodottoId!: number;
   prodotto!: Iprodotto;
   allItem: Iordine[]= [];
+  isLoading: boolean = true;
 
   constructor(
     private route: ActivatedRoute,
     private prodottoSvc: ProdottiService,
     private LSS:LogSystemService,
-    private listService: ListService,
     private ordineSvc: OrdineService,
     private RolesSVC:RuoliService,
     private router: Router
@@ -45,9 +45,9 @@ export class DetailsComponent {
 
     this.LSS.utente$.subscribe((user: IutenteAuth | null) => {
       this.isLogged = !!user;
-      if (user && user.utente.id) {
-        const userId = Number(user.utente.id); // Ottieni l'ID dell'utente da LSS.user$
-        this.fetchShop(userId); // Passa l'ID dell'utente a fetchShop() per ottenere le birre associate a quell'utente
+      if (user && user.obj) {
+        const userId = Number(user.obj); // Ottieni l'ID dell'utente da LSS.user$
+        this.fetchShop(userId); // Passa l'ID dell'utente a fetchShop() per ottenere il prodotto associato a quell'utente
       }
     });
 
@@ -59,12 +59,14 @@ export class DetailsComponent {
 
   getProdottoDetails(): void {
     this.prodottoSvc.getProdottoById(this.prodottoId).subscribe({
-      next: (prodotto: Iprodotto) => {
-        this.prodotto = prodotto;
+      next: (response: any) => {
+        this.prodotto = response.obj; // Assegnamento corretto dell'oggetto prodotto
+        this.isLoading = false;
         console.log('Dettagli del prodotto:', this.prodotto);
       },
       error: (error) => {
         console.error('Errore nel recupero dei dettagli del prodotto:', error);
+        this.isLoading = false; // Assicurati di gestire anche gli errori
       }
     });
   }
@@ -82,23 +84,6 @@ export class DetailsComponent {
     });
   }
 
-
-  addTolist(prodottoId: number, utenteId: number): Observable<void> {
-    return new Observable<void>((observer) => {
-      try {
-        const items = this.listService.wishlistItems.value; // Accedi al valore corrente di wishlistItems
-        if (!items.find(item => item.prodottoId === prodottoId && item.utenteId === utenteId)) {
-          items.push({ id: items.length + 1, prodottoId, utenteId });
-          this.listService.wishlistItems.next(items);
-          this.listService.updateWishlistInLocalStorage(items);
-        }
-        observer.next(); // Invia un segnale di completamento all'observable
-        observer.complete(); // Completa l'observable
-      } catch (error) {
-        observer.error(error); // Invia eventuali errori all'observable
-      }
-    });
-  }
 
 
 

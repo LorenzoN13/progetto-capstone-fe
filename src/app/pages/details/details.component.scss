@@ -1,9 +1,12 @@
 .singleCard {
   height: auto;
-  padding: 20px;
-  width: 50vw;
-  margin: 0 auto;
-  background-color: #f6b74b9e;
+  padding: 40px;
+  width: 450px;
+  margin: 50px auto;
+  background-color: #c8c8c89e;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.6);
+  position: relative;
 
   @media screen and (max-width: 768px) {
     width: 90vw;
@@ -36,12 +39,12 @@
   }
 }
 
-.deleteBeer {
+.deleteProdotto {
   border: none;
   background: none;
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 10px;
+  right: 11px;
   font-size: 1.8rem;
   color: red;
 
