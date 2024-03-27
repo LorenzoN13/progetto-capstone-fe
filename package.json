@@ -24,6 +24,7 @@
     "@fortawesome/free-brands-svg-icons": "^6.5.1",
     "@fortawesome/free-regular-svg-icons": "^6.5.1",
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
+    "@types/node": "^20.11.30",
     "bootstrap": "^5.3.3",
     "rxjs": "~7.8.0",
     "sweetalert2": "^11.10.7",

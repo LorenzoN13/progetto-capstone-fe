@@ -20,7 +20,6 @@ export class RegisterComponent {
   constructor(
     private fb:FormBuilder,
     private LSS:LogSystemService,
-    private RolesSVC:RuoliService,
     private router:Router
   ){}
 

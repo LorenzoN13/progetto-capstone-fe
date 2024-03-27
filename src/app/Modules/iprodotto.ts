@@ -10,4 +10,5 @@ export interface Iprodotto {
   immagineUrl: URL;
   categoria: string;
   quantita: number;
+  dimensione: string;
 }
