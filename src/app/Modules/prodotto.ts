@@ -9,7 +9,7 @@ export class Prodotto implements Iprodotto{
   public dimensione: string,
   public brand: string,
   public colore: string,
-  public immagineUrl: URL,
+  public immagineUrl: string,
   public categoria: string,
   public quantita: number,
   public prezzoScontato?: number,

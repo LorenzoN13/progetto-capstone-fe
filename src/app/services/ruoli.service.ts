@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment.development';
-import { BehaviorSubject, Observable, map, tap } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, map, of, tap } from 'rxjs';
 import { Iruolo } from '../Modules/iruolo';
 import { HttpClient } from '@angular/common/http';
 
@@ -20,8 +20,17 @@ export class RuoliService {
 
   getRoleByUserID(userID: number): Observable<string | undefined> {
     return this.http.get<any>(`${this.API}/${userID}`).pipe(
-      map((user: any) => {
-        return user.ruoli;
+      map((response: any) => {
+        if (response && response.ruoli) {
+          return response.ruoli;
+        } else {
+          throw new Error('Dati non validi ricevuti dal backend');
+        }
+      }),
+      catchError((error: any) => {
+        console.error('Errore durante il recupero del ruolo dell\'utente:', error);
+        // Gestire l'errore in modo appropriato, ad esempio ritornando un valore di default
+        return of(undefined); // Ritorna un observable vuoto o un valore di default
       })
     );
   }

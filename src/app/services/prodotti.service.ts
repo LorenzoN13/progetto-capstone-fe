@@ -5,6 +5,7 @@ import { environment } from '../../environments/environment.development';
 import { Observable, catchError, throwError } from 'rxjs';
 import { Iprodotto } from '../Modules/iprodotto';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -20,6 +21,7 @@ export class ProdottiService {
   }
 
   createProduct(prodotto: Iprodotto): Observable<Iprodotto> {
+    console.log("----------- ", prodotto);
     return this.http.post<Iprodotto>(`${this.apiUrl}`, prodotto);
   }
 

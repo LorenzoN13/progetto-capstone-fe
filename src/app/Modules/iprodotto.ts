@@ -7,7 +7,7 @@ export interface Iprodotto {
   percentualeSconto?: number;
   brand: string;
   colore: string;
-  immagineUrl: URL;
+  immagineUrl: string;
   categoria: string;
   quantita: number;
   dimensione: string;

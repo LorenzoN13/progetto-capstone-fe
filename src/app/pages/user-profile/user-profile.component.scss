@@ -1,0 +1,32 @@
+.bg-80{
+  height: 80vh;
+}
+
+//colori
+.style-ctn{
+  background-color:  #0a2f69;
+
+}
+.bottone{
+  background: none;
+  background-color:#f6b74b;
+  color:  #0a2f69;
+}
+.bg-eliminazione{
+  background-color:#f6b74b;
+}
+label, .h3-eliminazione{
+  color: #0a2f69;
+}
+
+
+p{
+  color: white;
+}
+
+//animation
+
+.bottone:hover{
+  transform: scale( 1.05 );
+}
+

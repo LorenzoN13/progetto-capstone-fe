@@ -8,7 +8,18 @@ import { ProdottiService } from '../../services/prodotti.service';
   styleUrl: './create.component.scss'
 })
 export class CreateComponent {
-  @Input() prodotto!:Iprodotto;
+  @Input() prodotto:Iprodotto = {
+    immagineUrl: '',
+    titolo: '',
+    colore:'',
+    quantita: 0,
+    descrizione: '',
+    brand: '',
+    dimensione: '',
+    categoria: '',
+    prezzo:0,
+    id:0
+  };
 
 constructor(
   private prodottoSvc:ProdottiService

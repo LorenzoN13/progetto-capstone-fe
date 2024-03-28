@@ -71,11 +71,21 @@ export class LogSystemService {
     return this.http.delete<Iutente>(`${this.APIUser}/${id}`);
   }
 
-  autoLogOut(token:string){
-    let expiringDate=this.jwt.getTokenExpirationDate(token) as Date;
-    let remainingTimeMs=expiringDate.getTime() - new Date().getTime();
-    setTimeout(() => {
-      this.logOut()
-    }, remainingTimeMs)
+  autoLogOut(token: string): void {
+    const expiringDate = this.jwt.getTokenExpirationDate(token) as Date;
+
+    if (expiringDate) { // Verifica che expiringDate non sia null o undefined
+      const remainingTimeMs = expiringDate.getTime() - new Date().getTime();
+
+      if (remainingTimeMs > 0) {
+        setTimeout(() => {
+          this.logOut();
+        }, remainingTimeMs);
+
+      } else {
+        // Il token è già scaduto, esegui il logout immediatamente
+        this.logOut();
+      }
+    } 
   }
 }

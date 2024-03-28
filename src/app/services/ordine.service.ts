@@ -1,4 +1,3 @@
-import { Prodotto } from './../Modules/prodotto';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment.development';
 import { BehaviorSubject, Observable, catchError, tap, throwError } from 'rxjs';
@@ -33,7 +32,11 @@ export class OrdineService {
   }
 
 
-  getShop(id: number): Observable<Iordine[]> {
+  getShop(id: number | undefined): Observable<Iordine[]> {
+    if (id === undefined) {
+      return throwError(() => new Error("User ID is undefined"))
+    }
+
     let params = new HttpParams().set('userId', id.toString());
 
     return this.http.get<Iordine[]>(this.apiUrlShop, { params }).pipe(
@@ -42,7 +45,7 @@ export class OrdineService {
   }
 
   addToShop(userId: number, prodotto: Iordinearticolo) {
-    let numeroprdottivenduti = 1; 
+    let numeroprdottivenduti = 1;
     if (prodotto.quantita !== undefined && prodotto.quantita > 1) {
       numeroprdottivenduti = prodotto.quantita;
     }
@@ -71,7 +74,7 @@ export class OrdineService {
 
 
   errorHandler(error: HttpErrorResponse): Observable<never> {
-    return throwError(() => error);
+    return throwError(() => new Error("User ID is undefined"));
   }
 
   calculateTotalCart(items: Iordine[]): number {
