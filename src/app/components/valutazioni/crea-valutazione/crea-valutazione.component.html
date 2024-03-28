@@ -1,0 +1,10 @@
+<div class="container-rec">
+  <form (ngSubmit)="submitForm()">
+    <div class="form-group">
+      <label for="valutazione">Valutazione</label>
+      <input type="number" id="valutazione" class="form-control" name="valutazione" required [(ngModel)]="valutazione.valutazione">
+      <div>La valutazione è obbligatoria</div>
+    </div>
+    <button type="submit">Invia valutazione</button>
+  </form>
+</div>

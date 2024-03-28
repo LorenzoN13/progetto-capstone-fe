@@ -30,6 +30,8 @@ import { far } from '@fortawesome/free-regular-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { CartIconComponent } from './components/header/cart-icon/cart-icon.component';
+import { CreaRecensioneComponent } from './components/recensioni/crea-recensione/crea-recensione.component';
+import { CreaValutazioneComponent } from './components/valutazioni/crea-valutazione/crea-valutazione.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +57,8 @@ import { CartIconComponent } from './components/header/cart-icon/cart-icon.compo
     PaginatorComponent,
     ListComponent,
     CartIconComponent,
+    CreaRecensioneComponent,
+    CreaValutazioneComponent,
   ],
   imports: [
     BrowserModule,

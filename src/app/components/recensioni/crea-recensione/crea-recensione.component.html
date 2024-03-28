@@ -1,0 +1,10 @@
+<div class="container-rec">
+  <form (ngSubmit)="submitForm()">
+    <div class="form-group">
+      <label for="recensione">Recensione</label>
+      <textarea type="recensione" id="recensione" class="form-control" name="recensione" required [(ngModel)]="recensione.recensione"></textarea>
+      <div>La recensione è obbligatoria</div>
+    </div>
+    <button type="submit">Invia recensione</button>
+  </form>
+</div>

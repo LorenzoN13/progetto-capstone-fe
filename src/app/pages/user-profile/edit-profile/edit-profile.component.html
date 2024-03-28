@@ -15,7 +15,7 @@
     <label for="username">Username:</label>
     <input class="form-control" type="text" id="usernamee" formControlName="username">
   </div>
-  <div *ngIf="isValidAndTouched('username')" class="alert alert-warning">Non è un cognome valido</div>
+  <div *ngIf="isValidAndTouched('username')" class="alert alert-warning">Non è un username valido</div>
 
   <div>
     <label for="email">Email:</label>
@@ -41,7 +41,6 @@
   <div class="d-flex justify-content-between mt-3">
       <ng-content></ng-content>
     <div class="d-flex">
-      <button *ngIf="!admin" (click)="adminSwitch()" class="btn bottone me-2">Admin</button>
       <button [disabled]="!form.valid" class="btn  bottone" (click)="submit()">Salva</button>
     </div>
   </div>

@@ -1,6 +1,7 @@
-export interface Irecensione {
+export interface Ivalutazioni {
+
   id?: number;
-  recensione: string;
+  valutazione: number;
   idUtente:number;
   idProdotto:number;
 }

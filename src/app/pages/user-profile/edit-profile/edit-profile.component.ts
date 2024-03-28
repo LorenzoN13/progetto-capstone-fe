@@ -4,7 +4,7 @@ import { IutenteAuth } from '../../../Modules/iutente-auth';
 import { Iruolo } from '../../../Modules/iruolo';
 import { LogSystemService } from '../../../services/log-system.service';
 import { RuoliService } from '../../../services/ruoli.service';
-import { catchError } from 'rxjs';
+import { catchError, map } from 'rxjs';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -95,38 +95,5 @@ export class EditProfileComponent {
     })
   }
 
-  async adminSwitch(){
-    const { value: password } = await Swal.fire({
-      title: "Enter your password",
-      input: "password",
-      inputLabel: "Password",
-      inputPlaceholder: "Enter your password",
-      inputAttributes: {
-        maxlength: "10",
-        autocapitalize: "off",
-        autocorrect: "off"
-      }
-    });
-    if (password==`admin`) {
-      this.userRole.ruolo=`admin`;
-      this.RolesSvc.upgradeUserRole(this.userRole).subscribe(()=>{
-        Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: "Now you are an admin",
-          showConfirmButton: false,
-          timer: 3000
-        });
-      })
 
-    }else{
-      Swal.fire({
-        position: "top-end",
-        icon: "error",
-        title: "EH! Volevi!",
-        showConfirmButton: false,
-        timer: 3000
-      });
-    }
-  }
 }

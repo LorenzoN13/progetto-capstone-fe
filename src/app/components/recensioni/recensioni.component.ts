@@ -1,10 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Irecensione } from '../../Modules/irecensione';
-import { Iprodotto } from '../../Modules/iprodotto';
-import { ActivatedRoute } from '@angular/router';
-import { LogSystemService } from '../../services/log-system.service';
 import { RecensioniService } from '../../services/recensioni.service';
-import { IutenteAuth } from '../../Modules/iutente-auth';
 
 @Component({
   selector: 'app-recensioni',
@@ -12,32 +8,26 @@ import { IutenteAuth } from '../../Modules/iutente-auth';
   styleUrl: './recensioni.component.scss'
 })
 export class RecensioniComponent {
-  recensioni: Irecensione[] = [];
-  isLogged: boolean = false;
-  prodottoId!: number;
-  prodotto!: Iprodotto;
+ recensioni: Irecensione[] = [];
 
-  constructor(
-    private route: ActivatedRoute,
-    private LSS:LogSystemService,
-    private recesioneSvc: RecensioniService
-    ){}
+ constructor(private RecensioniSvc: RecensioniService){}
 
-  OnInit(){
-    this.InRecensioni
-    this.LSS.utente$.subscribe((user:IutenteAuth|null)=>{
-      this.isLogged=!!user;
-    })
-  }
+ ngOnInit(): void{
+  this.fetchRecensioni();
+ }
 
-  InRecensioni(){
-    this.recesioneSvc.getRecensioni().subscribe(
-      (recensioni) => {
-        this.recensioni = recensioni;
-        console.log(this.recensioni);
+ fetchRecensioni(): void{
+  this.RecensioniSvc.getRecensioni().subscribe({
+    next: (response: any) => {
+      if (response && response.obj && response.obj.content) {
+        this.recensioni = response.obj.content;
+      } else {
+        console.error('Struttura dati non valida nella risposta del server.');
       }
-    )
-  }
-
-
+    },
+    error: (error) => {
+      console.error('Errore nel recupero della recensione:', error);
+    }
+  });
+ }
 }

@@ -10,19 +10,21 @@ import { TransferComponent } from './components/payment/transfer/transfer.compon
 import { ValutazioniComponent } from './components/valutazioni/valutazioni.component';
 import { LogGuard } from './pages/log-system/log.guard';
 import { EditComponent } from './pages/edit/edit.component';
-import { AdminGuard } from './pages/log-system/admin.guard';
 import { CreateComponent } from './pages/create/create.component';
 import { Pages404Component } from './pages/pages404/pages404.component';
 import { ListComponent } from './pages/list/list.component';
+import { CreaRecensioneComponent } from './components/recensioni/crea-recensione/crea-recensione.component';
 
 const routes: Routes = [
   { path: 'LogSystem',loadChildren: () => import('./pages/log-system/log-system.module').then(m => m.LogSystemModule) },
   { path: '', pathMatch:'full', redirectTo:'/home' },
   { path: 'home', component: HomeComponent },
-  { path: 'recensioni', component: RecensioniComponent },
+  { path: 'recensioni', component: RecensioniComponent,children:[] },
   { path: 'details/:id', component: DetailsComponent },
   { path: 'userprofile', component: UserProfileComponent, canActivate:[LogGuard]},
   { path: 'valutazioni', component: ValutazioniComponent},
+  { path: 'crea-recensione/:id', component: CreaRecensioneComponent, canActivate:[LogGuard]}, // }
+  { path: 'crea-valutazione/:id', component: CreaRecensioneComponent, canActivate:[LogGuard]},
   { path: 'payment', component: PaymentComponent,
   children:[
     { path: 'bancomat', component: BancomatComponent},
