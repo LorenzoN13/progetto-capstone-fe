@@ -21,7 +21,6 @@ export class LoginComponent {
     private fb:FormBuilder,
     private LSS:LogSystemService,
     private router:Router,
-    private RolesSVC:RuoliService
   ){}
 
   ngOnInit(){
@@ -51,16 +50,6 @@ export class LoginComponent {
           }
           throw error;
         })
-      )
-      .subscribe(data => {
-        // Verifica che data e data.obj non siano undefined
-        if (data && data.obj && data.obj.id) {
-          // Accedi all'id dell' data.obj
-
-        } else {
-          console.error("Impossibile accedere all'id dell'utente 'data.obj': 'data.obj' o 'id' è undefined.");
-          // Gestisci il caso in cui data, data.obj o data.obj.id sono undefined
-        }
-      });
+      ).subscribe();
   }
 }

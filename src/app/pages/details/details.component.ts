@@ -45,10 +45,6 @@ export class DetailsComponent{
 
     this.LSS.utente$.subscribe((user: IutenteAuth | null) => {
       this.isLogged = !!user;
-      if (user && user.obj) {
-        const userId = Number(user.obj); // Ottieni l'ID dell'utente da LSS.user$
-        this.fetchShop(userId); // Passa l'ID dell'utente a fetchShop() per ottenere il prodotto associato a quell'utente
-      }
     });
 
     this.RolesSVC.userRole$.subscribe(role =>{
@@ -70,21 +66,6 @@ export class DetailsComponent{
       }
     });
   }
-
-
-  fetchShop(userId: number): void {
-    this.ordineSvc.getShop(userId).subscribe({
-      next: (data:any) => {
-        this.allItem = data; // Assegna l'array di IShop alla variabile allItem
-        console.log('Tutti i prodotti presenti nello shop:', this.allItem);
-      },
-      error: (error) => {
-        console.error('Errore nel recupero dei prodotti:', error);
-      }
-    });
-  }
-
-
 
 
   deleteprodotto(id: number): void {

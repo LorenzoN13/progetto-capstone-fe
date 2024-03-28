@@ -24,17 +24,11 @@ export class StrumentiCardComponent {
   ) {
     this.logService.utente$.subscribe((user: IutenteAuth | null) => {
       this.loggedInUser = user;
+      console.log("--------",user);
       this.userId = user?.obj.id;
       this.isLogged = !!user;
     });
     this.listSvc = listSvc; // Inizializza wishlistSvc con listSvc
-  }
-
-  ngOnInit() {
-    this.listSvc.wishlistItems.subscribe((items) => {
-      this.listItems = items;
-      this.checkIfInWishlist();
-    });
   }
 
   addToWishList(prodottoId: number): void {

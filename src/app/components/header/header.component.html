@@ -11,7 +11,7 @@
           <a class="change nav-link d-none d-sm-none d-md-block line" routerLink="/home">HOME</a>
           <a class="change nav-link d-none d-sm-none d-md-block line" routerLink="/recensioni">RECENSIONI</a>
           <a class="change nav-link d-none d-sm-none d-md-block line" routerLink="/valutazioni">VALUTAZIONI</a>
-          <a *ngIf="admin" class= "change nav-link d-none d-sm-none d-md-block line"  routerLink="/create">Crea prodotto</a>
+          <a *ngIf="isLogged" class= "change nav-link d-none d-sm-none d-md-block line"  routerLink="/create">Crea prodotto</a>
         </div>
       </div>
     </div>
@@ -19,7 +19,7 @@
       <a *ngIf="isLogged" routerLink="/ordine" class="d-flex align-items-center">
         <app-cart-icon class="d-flex align-items-center mb-2"></app-cart-icon>
       </a>
-      <a class="line d-flex align-items-center" routerLink="/userprofile">
+      <a class="line d-flex align-items-center me-3" routerLink="/userprofile">
         <fa-icon [icon]="['far','user']" class="paginate-button__icon h4 log-in-icon mt-2"></fa-icon>
         <p *ngIf="isLogged && user?.obj" class="d-none d-lg-block line m-0 ms-2">{{user.obj.nome}}</p>
         <p *ngIf="!isLogged" class="m-0 me-4 ms-2 fs-5 ">Login</p>

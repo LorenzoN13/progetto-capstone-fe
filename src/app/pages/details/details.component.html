@@ -1,7 +1,7 @@
 <div *ngIf="prodotto">
   <div class="singleCard">
     <!-- Bottone per eliminare il prodotto (solo se l'utente è loggato come admin) -->
-    <button *ngIf="isLogged && admin" class="deleteProdotto" (click)="deleteprodotto(prodotto.id)">
+    <button *ngIf="isLogged" class="deleteProdotto" (click)="deleteprodotto(prodotto.id)">
       <fa-icon [icon]="['fas', 'trash-arrow-up']" class="trash"></fa-icon>
     </button>
     <div class="d-md-flex">
@@ -22,7 +22,7 @@
           <p class="w-50 mt-3 ms-3"><strong>Prezzo: {{ prodotto.prezzo | currency:"EUR" }}</strong></p>
           <div class="d-flex justify-content-end align-items-center detFoot w-100 ms-3 mt-3">
             <!-- Bottone per modificare il prodotto (solo se l'utente è loggato come admin) -->
-            <button *ngIf="isLogged && admin" [routerLink]="['/edit', prodotto.id]">EDIT</button>
+            <button *ngIf="isLogged" [routerLink]="['/edit', prodotto.id]">EDIT</button>
             <!-- Bottone per aggiungere il prodotto alla lista dei desideri (solo se l'utente è loggato) -->
             <button class="button" *ngIf="isLogged">WISH</button>
           </div>

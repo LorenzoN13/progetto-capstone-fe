@@ -30,8 +30,8 @@ const routes: Routes = [
     { path: '', redirectTo: 'bancomat', pathMatch: 'full' }
   ],
   canActivate:[LogGuard]},
-  { path: 'edit/:id', component: EditComponent ,canActivate:[AdminGuard]},
-  { path: 'create', component: CreateComponent ,canActivate:[AdminGuard]},
+  { path: 'edit/:id', component: EditComponent ,canActivate:[LogGuard]},
+  { path: 'create', component: CreateComponent ,canActivate:[LogGuard]},
   { path: '**', component:Pages404Component},
   { path: 'list', component: ListComponent}
 

@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment.development';
 import { Observable, catchError, throwError } from 'rxjs';
 import { Iprodotto } from '../Modules/iprodotto';
+import { IProdottoByIdResponse } from '../Modules/i-prodotto-by-id-response';
 
 
 @Injectable({
@@ -25,8 +26,8 @@ export class ProdottiService {
     return this.http.post<Iprodotto>(`${this.apiUrl}`, prodotto);
   }
 
-  getProdottoById(id:number):Observable<Iprodotto>{
-    return this.http.get<Iprodotto>(`${this.apiUrl}/${id}`);
+  getProdottoById(id:number):Observable<IProdottoByIdResponse>{
+    return this.http.get<IProdottoByIdResponse>(`${this.apiUrl}/${id}`);
   }
 
   errorHandler(error: HttpErrorResponse): Observable<never> {

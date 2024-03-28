@@ -44,7 +44,7 @@ export class RuoliService {
     return this.http.put<Iruolo>(`${this.API}/${userRole.id}`,userRole)
     .pipe(tap((data)=>{
       this.loggedRoleSub.next(data);
-      localStorage.setItem('role', JSON.stringify(data));
+      localStorage.setItem('ruoli', JSON.stringify(data));
     }));
   }
 
@@ -53,7 +53,7 @@ export class RuoliService {
   }
 
   logged(){
-    let localRole:string|null=localStorage.getItem('role');
+    let localRole:string|null=localStorage.getItem('ruoli');
     if (!localRole) return;
 
     let userRole:Iruolo=JSON.parse(localRole);

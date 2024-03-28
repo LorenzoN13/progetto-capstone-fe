@@ -43,7 +43,7 @@ export class EditProfileComponent {
     if(!this.userAuth) return;
     this.form = this.fb.group({
       nome: this.fb.control(this.userAuth?.obj.nome,[Validators.required]),
-      congnome: this.fb.control(this.userAuth?.obj.cognome,[Validators.required]),
+      cognome: this.fb.control(this.userAuth?.obj.cognome,[Validators.required]),
       email: this.fb.control(this.userAuth?.obj.email,[Validators.email]),
       username: this.fb.control(this.userAuth?.obj.username,[Validators.required]),
       password: this.fb.control(null,[Validators.required,Validators.pattern(this.regExPassword)]),

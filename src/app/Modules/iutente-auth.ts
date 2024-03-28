@@ -1,6 +1,6 @@
 import { Iutente } from "./iutente";
 
 export interface IutenteAuth {
-  accessToken: string;
+  token: string;
   obj:Iutente;
 }

@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Observable, map, tap } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, map, tap, throwError } from 'rxjs';
 import { environment } from '../../environments/environment.development';
 import { IutenteAuth } from '../Modules/iutente-auth';
 import { Iutente } from '../Modules/iutente';
@@ -31,20 +31,47 @@ export class LogSystemService {
     this.logged();
   }
 
+  getUserData(): Observable<IutenteAuth> {
+    return this.http.get<IutenteAuth>(this.APIUser);
+  }
+
   register(utente:Iregister):Observable<IutenteAuth>{
     return this.http.post<IutenteAuth>(this.APIRegister,utente)
   }
 
-  updateUser(utente:IutenteAuth):Observable<Iutente>{
-    this.authorized.next(utente);
-    return this.http.put<Iutente>(`${this.APIUser}/${utente.obj.id}`, utente.obj)
+  updateUser(utente: IutenteAuth): Observable<any> {
+    // Ottieni il token dall'utente autenticato
+    const token = utente.token;
+
+    // Verifica se il token è disponibile
+    if (!token) {
+      // Se il token è mancante, restituisci un errore
+      return throwError('Token mancante');
+    }
+
+    // Crea l'header con il token
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `${token}`
+    });
+
+    // Effettua la richiesta HTTP PUT per aggiornare l'utente
+    return this.http.put<IutenteAuth>(`${this.APIUser}/${utente.obj.id}`, utente.obj, { headers })
+      .pipe(
+        catchError(error => {
+          // Gestisci gli errori qui, ad esempio se la richiesta ha restituito un errore HTTP
+          console.error('Errore durante l\'aggiornamento dell\'utente:', error);
+          return throwError(() => error); // Aggiorna l'uso di throwError con la nuova firma
+        })
+      );
   }
+
 
   login(utente:Ilogin):Observable<IutenteAuth>{
     return this.http.post<IutenteAuth>(this.APILogin,utente)
     .pipe(tap(data=>{
       this.authorized.next(data);
-      this.autoLogOut(data.accessToken)
+      this.autoLogOut(data.token)
       localStorage.setItem('utente', JSON.stringify(data))
     }))
   }
@@ -54,9 +81,9 @@ export class LogSystemService {
     if (!localLogin) return;
 
     let oldAuth:IutenteAuth=JSON.parse(localLogin);
-    if(this.jwt.isTokenExpired(oldAuth.accessToken)) return
+    if(this.jwt.isTokenExpired(oldAuth.token)) return
 
-    this.autoLogOut(oldAuth.accessToken);
+    this.autoLogOut(oldAuth.token);
     this.authorized.next(oldAuth);
   }
 
@@ -67,8 +94,14 @@ export class LogSystemService {
     this.router.navigate(['/home']);
   }
 
-  deleteAccount(id:number):Observable<Iutente>{
-    return this.http.delete<Iutente>(`${this.APIUser}/${id}`);
+  deleteAccount(id: number, token: string): Observable<void> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `${token}`
+      })
+    };
+    return this.http.delete<void>(`${this.APIUser}/${id}`, httpOptions);
   }
 
   autoLogOut(token: string): void {
@@ -86,6 +119,6 @@ export class LogSystemService {
         // Il token è già scaduto, esegui il logout immediatamente
         this.logOut();
       }
-    } 
+    }
   }
 }
