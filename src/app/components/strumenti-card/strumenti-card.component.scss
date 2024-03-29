@@ -56,6 +56,14 @@ margin: 0;
       margin-right: 10px;
     }
 
+    &--text.desc{
+      font-size: 14px;
+    margin-bottom: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc(100% - 20px);
+    }
+
     .addToWishList{
       z-index: 1000;
     }
@@ -138,8 +146,28 @@ a{
 }
 
 .bot-rec:hover{
-  background-color: rgb(141, 141, 141);
+  background-color: rgb(191, 191, 191);
 }
+
+@media (max-width: 992px) {
+  .card {
+    max-width: calc((100%) / 3); /* Aggiorniamo la larghezza massima delle card per la modalità tablet */
+  }
+}
+
+@media (min-width: 768px) {
+  .card {
+    max-width: calc((100%) / 3); /* Impostiamo la larghezza massima delle card per la modalità mobile */
+  }
+}
+
+@media (min-width: 320px) {
+  .card {
+    max-width: calc(100%); /* Impostiamo la larghezza massima delle card per schermi più piccoli */
+  }
+
+}
+
 
 
 

@@ -4,19 +4,19 @@
       <fa-icon [icon]="isInWishlist ? ['fas', 'heart'] : ['far', 'heart']" id="icon" class="paginate-button__icon"></fa-icon>
     </button>
 
-    <a class="d-block text-center"[routerLink]="['/details/'+ prodotto.id]">
-      <img  [src]="prodotto.immagineUrl" class="card__img" alt="strumento image">
-      <div class="card__data">
-          <p class="card__data--title">{{ prodotto.titolo }}</p>
-          <p class="card__data--text">Descrizione: {{prodotto.descrizione }}</p>
-          <p class="card__data--text">Brand: {{prodotto.brand }}</p>
-          <p class="card__data--text">Dimensione: {{prodotto.dimensione }}</p>
-          <p class="card__data--text">Colore: {{prodotto.colore }}</p>
-          <p class="card__data--text">Categoria: {{prodotto.categoria }}</p>
-          <p class="card__data--text">Quantita: {{prodotto.quantita }}</p>
-          <p class="card__data--text">Prezzo: {{ prodotto.prezzo| currency:'EUR' }}</p>
-      </div>
+    <a class="d-block text-center" [routerLink]="['/details/'+ prodotto.id]">
+      <img [src]="prodotto.immagineUrl" class="card__img" alt="strumento image">
     </a>
+    <div class="card__data">
+      <p class="card__data--title">{{ prodotto.titolo }}</p>
+      <p class="card__data--text desc">{{ prodotto.descrizione | slice:0:100 }}{{ prodotto.descrizione.length > 100 ? '...' : '' }}</p>
+      <p class="card__data--text">Brand: {{ prodotto.brand }}</p>
+      <p class="card__data--text">Dimensione: {{ prodotto.dimensione }}</p>
+      <p class="card__data--text">Colore: {{ prodotto.colore }}</p>
+      <p class="card__data--text">Categoria: {{ prodotto.categoria }}</p>
+      <p class="card__data--text">Quantita: {{ prodotto.quantita }}</p>
+      <p class="card__data--text">Prezzo: {{ prodotto.prezzo | currency:'EUR' }}</p>
+    </div>
     <a *ngIf="isLogged" class="bot-rec" [routerLink]="['/crea-recensione/', prodotto.id]">Recensione</a>
   </div>
 </div>
