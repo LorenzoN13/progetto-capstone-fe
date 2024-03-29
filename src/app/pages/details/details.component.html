@@ -1,7 +1,9 @@
 <div *ngIf="prodotto">
+  <!-- Il blocco verrà visualizzato solo se il prodotto è definito (non null o undefined) -->
   <div class="singleCard">
-    <!-- Bottone per eliminare il prodotto (solo se l'utente è loggato come admin) -->
+    <!-- Bottone per eliminare il prodotto (visibile solo se l'utente è loggato come admin) -->
     <button *ngIf="isLogged" class="deleteProdotto" (click)="deleteprodotto(prodotto.id)">
+      <!-- Icona per eliminare il prodotto -->
       <fa-icon [icon]="['fas', 'trash-arrow-up']" class="trash"></fa-icon>
     </button>
     <div class="d-md-flex">
@@ -21,7 +23,7 @@
           <!-- Prezzo del prodotto -->
           <p class="w-50 mt-3 ms-3"><strong>Prezzo: {{ prodotto.prezzo | currency:"EUR" }}</strong></p>
           <div class="d-flex justify-content-end align-items-center detFoot w-100 ms-2 mt-3">
-            <!-- Bottone per modificare il prodotto (solo se l'utente è loggato come admin) -->
+            <!-- Bottone per modificare il prodotto (visibile solo se l'utente è loggato come admin) -->
             <button *ngIf="isLogged" [routerLink]="['/edit', prodotto.id]">EDIT</button>
           </div>
         </div>

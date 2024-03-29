@@ -13,10 +13,13 @@ import { Router } from '@angular/router';
 })
 export class StrumentiCardComponent {
   @Input() prodotto!: Iprodotto;
+  //Contiene le informazioni sull'utente attualmente loggato.
   loggedInUser: IutenteAuth | null = null;
   isLogged: boolean = false;
   userId!: number | undefined;
+  //Contiene gli elementi presenti nella lista dei desideri dell'utente.
   listItems: IListItem[] | null = [];
+  // Indica se il prodotto è attualmente nella lista dei desideri dell'utente.
   isInWishlist: boolean = false;
 
   constructor(
@@ -24,6 +27,9 @@ export class StrumentiCardComponent {
     private listSvc: ListService,
     private router: Router
   ) {
+    //Si sottoscrive all'observable utente$ del servizio logService per ottenere le informazioni sull'utente
+    //loggato e aggiorna le variabili di stato di conseguenza.
+    //Inizializza il servizio listSvc.
     this.logService.utente$.subscribe((user: IutenteAuth | null) => {
       this.loggedInUser = user;
       console.log("--------",user);
@@ -32,7 +38,8 @@ export class StrumentiCardComponent {
     });
     this.listSvc = listSvc; // Inizializza listSvc
   }
-
+  //Aggiunge il prodotto corrente alla lista dei desideri dell'utente.
+  //Controlla se l'utente è loggato e se il prodotto è già presente nella lista dei desideri prima di aggiungerlo.
   addToWishList(prodotto: Iprodotto): void {
     this.fetchlist();
     if (!this.loggedInUser || !this.loggedInUser.obj.id) {
@@ -50,7 +57,7 @@ export class StrumentiCardComponent {
       this.isInWishlist = true;
     }
   }
-
+  //Recupera la lista dei desideri dell'utente dal servizio listSvc.
   fetchlist() {
     if (!this.userId) return;
     this.listSvc.getlist().subscribe({
@@ -62,7 +69,7 @@ export class StrumentiCardComponent {
       }
     });
   }
-
+  //Verifica se il prodotto corrente è già presente nella lista dei desideri dell'utente.
   checkIfInWishlist(): void {
     if (!this.listItems) return;
     if (this.loggedInUser && this.loggedInUser.obj.id) {
@@ -70,10 +77,11 @@ export class StrumentiCardComponent {
       this.isInWishlist = isProductInWishlist;
     }
   }
-
+  //Apre un modulo per la creazione di una recensione per il prodotto specificato,
+  //navigando verso la pagina crea-recensione e passando l'ID del prodotto come parametro.
+  
   openReviewForm(productId: number) {
     this.prodotto.id = productId;
-
     // Ecco un esempio di navigazione verso un'altra pagina passando l'ID del prodotto come parametro
     this.router.navigate(['/crea-recensione', productId ]);
   }

@@ -1,11 +1,21 @@
+<!-- Inizio del contenitore principale -->
 <div class="cont">
+  <!-- Header della pagina -->
   <header>
+    <!-- Inclusione del componente dell'intestazione -->
     <app-header></app-header>
   </header>
+
+  <!-- Contenuto principale della pagina, gestito dalle route -->
   <main>
+    <!-- Router-outlet per visualizzare i componenti dinamici in base alle route -->
     <router-outlet> </router-outlet>
   </main>
+
+  <!-- Footer della pagina -->
   <footer>
-  <app-footer></app-footer>
+    <!-- Inclusione del componente del piè di pagina -->
+    <app-footer></app-footer>
   </footer>
 </div>
+<!-- Fine del contenitore principale -->

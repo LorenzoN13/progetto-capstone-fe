@@ -12,44 +12,54 @@ import { RuoliService } from '../../../services/ruoli.service';
 })
 export class LoginComponent {
   form!: FormGroup;
-  loading!:boolean;
-
+  loading!: boolean;
   failedLogin!: boolean;
   notExist!: boolean;
 
   constructor(
-    private fb:FormBuilder,
-    private LSS:LogSystemService,
-    private router:Router,
-  ){}
+    private fb: FormBuilder,
+    private LSS: LogSystemService,
+    private router: Router,
+  ) {}
 
-  ngOnInit(){
+  ngOnInit(): void {
+    // Inizializzazione del form con i campi username e password
     this.form = this.fb.group({
-      username: this.fb.control(null,[Validators.required]),
-      password: this.fb.control(null,[Validators.required]),
-    })
+      username: this.fb.control(null, [Validators.required]),
+      password: this.fb.control(null, [Validators.required]),
+    });
   }
 
-  submit() {
+  // Funzione per la gestione del submit del form
+  submit(): void {
+    // Impostazione del flag di caricamento a true
     this.loading = true;
-    this.LSS.login(this.form.value)
-      .pipe(
-        tap(() => {
-          this.loading = false;
-          this.router.navigate([``]);
-        }),
-        catchError(error => {
-          this.loading = false;
-          switch (error.error) {
-            case "Cannot find user":
-              this.notExist = true;
-              break;
-            default:
-              this.failedLogin = true;
-              break;
-          }
-          throw error;
-        })
-      ).subscribe();
+
+    // Chiamata al servizio di login attraverso il LogSystemService
+    this.LSS.login(this.form.value).pipe(
+      tap(() => {
+        // Se la chiamata ha successo, si imposta il flag di caricamento a false
+        // e si reindirizza l'utente alla pagina principale
+        this.loading = false;
+        this.router.navigate(['']);
+      }),
+      catchError(error => {
+        // Se si verifica un errore durante la chiamata al servizio di login,
+        // si imposta il flag di caricamento a false e si gestisce l'errore
+        this.loading = false;
+        switch (error.error) {
+          // Se l'errore indica che l'account non esiste, si imposta il flag "notExist" a true
+          case 'Cannot find user':
+            this.notExist = true;
+            break;
+          // Altrimenti, si imposta il flag "failedLogin" a true
+          default:
+            this.failedLogin = true;
+            break;
+        }
+        // Si propaga l'errore per la gestione successiva, ad esempio per mostrare un messaggio all'utente
+        throw error;
+      })
+    ).subscribe();
   }
 }

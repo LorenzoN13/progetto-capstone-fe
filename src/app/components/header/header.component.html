@@ -1,6 +1,7 @@
 <div class="contaiener-fluid">
   <nav class="navbar navbar-expand-lg p-0 bg-body-tertiary">
     <div class="container-fluid">
+      <!-- Questo routerLink porta alla home quando viene cliccato il logo-->
       <a routerLink="home" routerLinkActive="p-0 router-link-active">
         <img src="/assets/imgs/logo.png" alt="logo" class="logo rounded p-0"
       /></a><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,17 +11,19 @@
         <div class="navbar-nav">
           <a class="change nav-link d-none d-sm-none d-md-block line" routerLink="/home">HOME</a>
           <a class="change nav-link d-none d-sm-none d-md-block line" routerLink="/recensioni">RECENSIONI</a>
+          <!-- Questa direttiva strutturale serve ha verificare la visibilità di un elemento in questo caso il link che porta alla pagina di creazione del prodotto
+          in pratica verifica se l'utente è loggato, se è loggato alla rendera visibile il link se no lo nasconderà.-->
           <a *ngIf="isLogged" class= "change nav-link d-none d-sm-none d-md-block line"  routerLink="/create">Crea prodotto</a>
           <a *ngIf="isLogged" class= "change nav-link d-none d-sm-none d-md-block line"  routerLink="/list">Lista dei prodotti</a>
         </div>
       </div>
     </div>
     <div>
-      <a *ngIf="isLogged" routerLink="/ordine" class="d-flex align-items-center">
-        <app-cart-icon class="d-flex align-items-center mb-2"></app-cart-icon>
-      </a>
       <a class="line d-flex align-items-center me-3" routerLink="/userprofile">
         <fa-icon [icon]="['far','user']" class="paginate-button__icon h4 log-in-icon mt-2"></fa-icon>
+        <!--Questo paragrafo viene visualizzato solo se:
+            - isLogged è true (utente autenticato)
+            - user?.obj è definito (per evitare errori nel caso in cui user non sia ancora stato inizializzato)-->
         <p *ngIf="isLogged && user?.obj" class="d-none d-lg-block line m-0 ms-2">{{user.obj.nome}}</p>
         <p *ngIf="!isLogged" class="m-0 me-4 ms-2 fs-5 ">Login</p>
       </a>

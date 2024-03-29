@@ -23,7 +23,6 @@ import { ListComponent } from './pages/list/list.component';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
-import { CartIconComponent } from './components/header/cart-icon/cart-icon.component';
 import { CreaRecensioneComponent } from './components/recensioni/crea-recensione/crea-recensione.component';
 import { SpedizioniComponent } from './components/spedizioni/spedizioni.component';
 import { ServizioclientiComponent } from './components/servizioclienti/servizioclienti.component';
@@ -46,7 +45,6 @@ import { ResierimborsiComponent } from './components/resierimborsi/resierimborsi
     CarouselComponent,
     PaginatorComponent,
     ListComponent,
-    CartIconComponent,
     CreaRecensioneComponent,
     SpedizioniComponent,
     ServizioclientiComponent,

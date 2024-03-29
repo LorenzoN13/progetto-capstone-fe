@@ -1,3 +1,10 @@
+<!-- Inizio del div con classe "bg-totale" -->
 <div class="bg-totale">
   <img src="https://creativamentedesign.it/wp-content/uploads/2020/12/pagina-404-lavazza.jpg" class="img-fluid rounded" alt="">
 </div>
+<!-- Viene utilizzato per la pagina 404 noy found,
+  ovvero quando un routerLink non trova nessun link alle pagine grazie all app-router.module.ts e scrivendo quanto segue,
+{ path: '**', component:Pages404Component} il ruoter router non riconoscera il link cliccato e portera a questa pagina,
+perchè il path: '**' indica un percorso wildcard che corrisponde a qualsiasi URL che non ha trovato una corrispondenza
+con nessuna delle altre rotte definite. -->
+

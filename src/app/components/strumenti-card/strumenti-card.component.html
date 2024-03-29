@@ -1,22 +1,38 @@
 <div class="card-container">
   <div class="card mb-1 p-2 pt-0">
+    <!-- Bottone per aggiungere il prodotto alla lista dei desideri, mostrato solo se l'utente è loggato -->
     <button *ngIf="isLogged" class="addToWishList" (click)="addToWishList(prodotto)">
+      <!-- Icona del cuore pieno se il prodotto è nella lista dei desideri, altrimenti icona del cuore vuoto -->
       <fa-icon [icon]="isInWishlist ? ['fas', 'heart'] : ['far', 'heart']" id="icon" class="paginate-button__icon"></fa-icon>
     </button>
 
+    <!-- Link per navigare ai dettagli del prodotto -->
     <a class="d-block text-center" [routerLink]="['/details/'+ prodotto.id]">
+      <!-- Immagine del prodotto -->
       <img [src]="prodotto.immagineUrl" class="card__img" alt="strumento image">
     </a>
+
+    <!-- Sezione dei dati del prodotto -->
     <div class="card__data">
+      <!-- Titolo del prodotto -->
       <p class="card__data--title">{{ prodotto.titolo }}</p>
+      <!-- Descrizione del prodotto, tagliata a 100 caratteri -->
       <p class="card__data--text desc">{{ prodotto.descrizione | slice:0:100 }}{{ prodotto.descrizione.length > 100 ? '...' : '' }}</p>
+      <!-- Brand del prodotto -->
       <p class="card__data--text">Brand: {{ prodotto.brand }}</p>
+      <!-- Dimensione del prodotto -->
       <p class="card__data--text">Dimensione: {{ prodotto.dimensione }}</p>
+      <!-- Colore del prodotto -->
       <p class="card__data--text">Colore: {{ prodotto.colore }}</p>
+      <!-- Categoria del prodotto -->
       <p class="card__data--text">Categoria: {{ prodotto.categoria }}</p>
-      <p class="card__data--text">Quantita: {{ prodotto.quantita }}</p>
+      <!-- Quantità del prodotto disponibile -->
+      <p class="card__data--text">Quantità: {{ prodotto.quantita }}</p>
+      <!-- Prezzo del prodotto -->
       <p class="card__data--text">Prezzo: {{ prodotto.prezzo | currency:'EUR' }}</p>
     </div>
+
+    <!-- Link per navigare alla pagina di creazione di una recensione per il prodotto, mostrato solo se l'utente è loggato -->
     <a *ngIf="isLogged" class="bot-rec" [routerLink]="['/crea-recensione/', prodotto.id]">Recensione</a>
   </div>
 </div>

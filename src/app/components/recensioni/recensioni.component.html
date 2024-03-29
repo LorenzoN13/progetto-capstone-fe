@@ -1,7 +1,7 @@
 <div class="card-container">
+  <!-- Inizio del ciclo *ngFor: per ogni recensione nell'array recensioni, crea un elemento card -->
   <div class="card mb-1 p-2 pt-0" *ngFor="let recensione of recensioni">
     <div class="card__data">
-      <img   alt="">
       <!-- Visualizza le informazioni della recensione qui -->
       {{ recensione.recensione }}
     </div>

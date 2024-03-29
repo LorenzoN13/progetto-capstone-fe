@@ -9,18 +9,18 @@ import { ListService } from '../../services/list.service';
   styleUrl: './list.component.scss'
 })
 export class ListComponent implements OnInit{
-
   listItems$!: Observable<IListItem[]>;
 
   constructor(private listService: ListService) {}
 
   ngOnInit(): void {
-    // Ottieni l'observable dei prodotti dalla lista
+    // Ottieni l'observable dei prodotti dalla lista chiamando il metodo getlist() del servizio ListService
     this.listItems$ = this.listService.getlist();
   }
 
+  // Funzione per rimuovere un prodotto dalla lista
   removeFromList(prodottoId: number, utenteId: number): void {
-    // Rimuovi il prodotto dalla lista utilizzando il servizio ListService
+    // Chiamata al metodo removeFromlist() del servizio ListService per rimuovere il prodotto dalla lista
     this.listService.removeFromlist(prodottoId, utenteId);
   }
 }

@@ -1,36 +1,49 @@
 <div class="container userTab">
+  <!-- Form per la registrazione -->
   <form [formGroup]="form">
 
+    <!-- Campo "Nome" -->
     <div>
       <label for="nome">Nome:</label>
-      <input class="form-control" type="text" id="nome" formControlName="nome" >
+      <input class="form-control" type="text" id="nome" formControlName="nome">
     </div>
+    <!-- Messaggio di avviso se il campo "Nome" è stato toccato ma non è valido -->
     <div *ngIf="isValidAndTouched('nome')" class="alert alert-warning">Enter your name</div>
+
+    <!-- Campo "Cognome" -->
     <div>
       <label for="cognome">Cognome:</label>
       <input class="form-control" type="text" id="cognome" formControlName="cognome">
     </div>
+    <!-- Messaggio di avviso se il campo "Cognome" è stato toccato ma non è valido -->
     <div *ngIf="isValidAndTouched('cognome')" class="alert alert-warning">Enter your cognome</div>
 
+    <!-- Campo "Username" -->
     <div>
       <label for="username">Username:</label>
       <input class="form-control" type="text" id="username" formControlName="username">
     </div>
+    <!-- Messaggio di avviso se il campo "Username" è stato toccato ma non è valido -->
     <div *ngIf="isValidAndTouched('username')" class="alert alert-warning">Enter your username</div>
 
+    <!-- Campo "Email" -->
     <div>
       <label for="email">Email:</label>
       <input class="form-control" type="text" id="email" formControlName="email">
     </div>
+    <!-- Messaggio di avviso se il campo "Email" è stato toccato ma non è valido -->
     <div *ngIf="isValidAndTouched('email') && !emailExist" class="alert alert-warning">This isn't a valid email</div>
-    <div *ngIf="emailExist" class="alert alert-warning">This email already exist!</div>
+    <!-- Messaggio di avviso se l'email inserita esiste già -->
+    <div *ngIf="emailExist" class="alert alert-warning">This email already exists!</div>
 
+    <!-- Campo "Password" -->
     <div>
       <label for="password">Password:</label>
       <input class="form-control" type="password" id="password" formControlName="password">
     </div>
+    <!-- Messaggio di avviso se il campo "Password" è stato toccato ma non è valido -->
     <div *ngIf="isValidAndTouched('password')" class="alert alert-warning">
-      <p>Not a valid password. It must contains:</p>
+      <p>Not a valid password. It must contain:</p>
       <ul>
         <li>At least 8 characters</li>
         <li>A number</li>
@@ -40,16 +53,23 @@
       </ul>
     </div>
 
+    <!-- Campo "Conferma Password" -->
     <div>
       <label for="confirmPassword">Confirm Password:</label>
       <input class="form-control" type="password" id="confirmPassword" formControlName="confirmPassword">
     </div>
+    <!-- Messaggio di avviso se il campo "Conferma Password" è stato toccato ma non è valido -->
     <div *ngIf="isValidAndTouched('confirmPassword')" class="alert alert-warning">
-      {{getCustomMessage('confirmPassword')}}
+      {{ getCustomMessage('confirmPassword') }}
     </div>
+
+    <!-- Link per il login -->
     <p class="mt-2">Are you signed?<a routerLink="/LogSystem/login">Log in!</a></p>
 
+    <!-- Pulsante di submit -->
     <button [disabled]="!form.valid" class="mt-1 p-1" (click)="submit()">Sign up</button>
   </form>
+
+  <!-- Messaggio di caricamento -->
   <div *ngIf="loading">Loading...</div>
 </div>

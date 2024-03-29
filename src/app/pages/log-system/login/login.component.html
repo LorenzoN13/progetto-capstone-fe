@@ -1,21 +1,32 @@
 <div class="container userTab">
+  <!-- Form per il login -->
   <form [formGroup]="form" class="rounded">
+    <!-- Campo di input per l'username -->
     <div>
       <label for="username">Username:</label>
       <input class="form-control" type="text" id="username" formControlName="username">
     </div>
 
+    <!-- Campo di input per la password -->
     <div>
       <label for="password">Password:</label>
       <input class="form-control" type="password" id="password" formControlName="password">
     </div>
+
+    <!-- Messaggio di errore per account non esistente -->
     <div class="mt-3" *ngIf="notExist">That account doesn't exist</div>
+
+    <!-- Messaggio di errore per credenziali di accesso errate -->
     <div class="my-3" *ngIf="failedLogin">Username/password sbagliati</div>
+
+    <!-- Link per registrarsi se non si ha un account -->
     <div class="d-md-flex mt-3 text-end text-md-start justify-content-between align-items-center">
       <p class="m-0 sign">You aren't signed? <a routerLink="/LogSystem/register">Sign In!</a></p>
+      <!-- Pulsante di login -->
       <button [disabled]="!form.valid" class="p-1 mt-2 mt-md-0 rounded" (click)="submit()">Login</button>
     </div>
-
   </form>
+
+  <!-- Messaggio di caricamento -->
   <div *ngIf="loading">Caricamento...</div>
 </div>

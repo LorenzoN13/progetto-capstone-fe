@@ -1,4 +1,3 @@
-import { Prodotto } from './../Modules/prodotto';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment.development';
@@ -12,32 +11,38 @@ import { IProdottoByIdResponse } from '../Modules/i-prodotto-by-id-response';
 })
 export class ProdottiService {
 
-  private apiUrl = `${environment.API}/prodotti`;
-  prodottoTitolo: string = "";
+  private apiUrl = `${environment.API}/prodotti`; // URL dell'API per i prodotti
+  prodottoTitolo: string = ""; // Variabile per il titolo del prodotto
 
   constructor(private http: HttpClient) { }
 
-  getProdotti():Observable<any[]> {
+  // Ottiene tutti i prodotti
+  getProdotti(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl);
   }
 
+  // Crea un nuovo prodotto
   createProduct(prodotto: Iprodotto): Observable<Iprodotto> {
-    console.log("----------- ", prodotto);
+    console.log("----------- ", prodotto); // Log del prodotto
     return this.http.post<Iprodotto>(`${this.apiUrl}`, prodotto);
   }
 
-  getProdottoById(id:number):Observable<IProdottoByIdResponse>{
+  // Ottiene un prodotto per ID
+  getProdottoById(id: number): Observable<IProdottoByIdResponse> {
     return this.http.get<IProdottoByIdResponse>(`${this.apiUrl}/${id}`);
   }
 
+  // Gestisce gli errori HTTP
   errorHandler(error: HttpErrorResponse): Observable<never> {
     return throwError(() => error);
   }
 
+  // Imposta il nome del prodotto
   setProdottoName(titolo: string): void {
     this.prodottoTitolo = titolo;
   }
 
+  // Aggiorna un prodotto
   updateProdotto(prodottoId: number, updatedProdotto: Iprodotto): Observable<Iprodotto> {
     const url = `${this.apiUrl}/${prodottoId}`;
     return this.http.put<Iprodotto>(url, updatedProdotto).pipe(
@@ -47,7 +52,8 @@ export class ProdottiService {
     );
   }
 
-  deleteProdotto(id:number):Observable<Iprodotto>{
+  // Elimina un prodotto
+  deleteProdotto(id: number): Observable<Iprodotto> {
     return this.http.delete<Iprodotto>(`${this.apiUrl}/${id}`);
   }
 }

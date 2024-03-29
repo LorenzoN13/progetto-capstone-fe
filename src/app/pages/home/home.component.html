@@ -1,11 +1,18 @@
 <div class="cont">
+  <!-- Contenitore del carousel -->
   <div class="contaiener-carousel">
+    <!-- Componente del carousel -->
     <app-carousel></app-carousel>
   </div>
 
+  <!-- Titolo degli articoli in evidenza -->
   <h4>Articoli in evidenza</h4>
+
+  <!-- Contenitore delle card degli articoli -->
   <div class="card-container" *ngIf="prodotti.length > 0">
+    <!-- Iterazione attraverso ogni prodotto nell'array prodotti -->
     <div *ngFor="let prodotto of prodotti" class="mt-3">
+      <!-- Componente della card degli strumenti, passando il prodotto corrente come input -->
       <app-strumenti-card [prodotto]="prodotto"></app-strumenti-card>
     </div>
   </div>

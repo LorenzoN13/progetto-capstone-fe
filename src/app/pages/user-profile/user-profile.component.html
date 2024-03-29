@@ -1,13 +1,17 @@
+<!-- Questo codice HTML rappresenta una sezione di visualizzazione del profilo utente -->
 <div class="bg-80">
   <div class="container p-4 rounded style-ctn contorno">
+    <!-- Se non si è in modalità di modifica -->
     <div *ngIf="!editMode">
+      <!-- Informazioni sul profilo utente -->
       <div>
         <img src="https://static.vecteezy.com/ti/gratis-vektor/t2/2387693-benutzerprofil-symbol-vektor.jpg" alt="immagine utente">
         <p>Username: {{user.username}}</p>
-        <p>Nome: {{ user.nome|titlecase}}</p>
-        <p>Cognome: {{ user.cognome |titlecase}}</p>
+        <p>Nome: {{ user.nome | titlecase }}</p>
+        <p>Cognome: {{ user.cognome | titlecase }}</p>
         <p>Email: {{ user.email }}</p>
       </div>
+      <!-- Pulsanti per eliminare l'account, modificare il profilo e disconnettersi -->
       <div>
         <div class="d-flex justify-content-between">
           <div>
@@ -18,25 +22,31 @@
             <button (click)="logOut()" class="btn bottone me-2">Log Out</button>
           </div>
         </div>
+        <!-- Se è attivo il processo di eliminazione dell'account -->
         <div *ngIf="deleting" class="bg-eliminazione rounded mt-3 text-white p-3">
           <h3 class="h3-eliminazione">Do you really want to delete this account?</h3>
+          <!-- Input per confermare l'eliminazione -->
           <label for="deleting-name" class="mb-1">Enter "{{ user.nome }}" to confirm!</label>
           <div class="d-flex me-1">
-            <input id="deleting-name" class="me-2" [(ngModel)]="deletingName"type="text"/>
+            <input id="deleting-name" class="me-2" [(ngModel)]="deletingName" type="text"/>
+            <!-- Pulsanti per confermare o annullare l'eliminazione -->
             <button class="btn btn-danger me-2" (click)="confirmDelete()">Delete</button>
             <button class="btn btn-success" (click)="cancelDelete()">No</button>
           </div>
+          <!-- Messaggio di errore se il nome inserito è sbagliato -->
           <div *ngIf="wrongName">
             Enter your name to continue
           </div>
         </div>
       </div>
     </div>
+    <!-- Componente per la modifica del profilo -->
     <div>
+      <!-- Il componente per la modifica del profilo è incluso solo quando si è in modalità di modifica -->
       <app-edit-profile [editMode]="editMode">
+        <!-- Pulsante per tornare indietro alla visualizzazione del profilo -->
         <button class="disable-edit-mode btn bottone" *ngIf="editMode" (click)="editMode = !editMode">Back</button>
       </app-edit-profile>
     </div>
   </div>
 </div>
-
