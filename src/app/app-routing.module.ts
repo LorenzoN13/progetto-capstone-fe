@@ -28,6 +28,7 @@ const routes: Routes = [
   { path: 'crea-recensione/:id', component: CreaRecensioneComponent, canActivate:[LogGuard]},
   { path: 'servizioclienti', component: ServizioclientiComponent},
   { path: 'resierimborsi', component: ResierimborsiComponent},
+  { path: 'list', component: ListComponent},
   { path: 'payment', component: PaymentComponent,
   children:[
     { path: 'bancomat', component: BancomatComponent},
@@ -38,8 +39,6 @@ const routes: Routes = [
   { path: 'edit/:id', component: EditComponent ,canActivate:[LogGuard]},
   { path: 'create', component: CreateComponent ,canActivate:[LogGuard]},
   { path: '**', component:Pages404Component},
-  { path: 'list', component: ListComponent}
-
 ];
 
 @NgModule({

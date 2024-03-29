@@ -1,1 +1,20 @@
-<p>list works!</p>
+<div class="card-container">
+  <div class="card mb-3" *ngFor="let item of listItems$ | async">
+    <!-- Contenuto della card per ciascun prodotto -->
+    <div class="card__data">
+      <ng-container *ngIf="item.prodotto">
+        <img  [src]="item.prodotto.immagineUrl" class="card__img" alt="strumento image">
+        <h6 class="card__data--title">Titolo: {{ item.prodotto.titolo }}</h6>
+        <p class="card__data--text">Descrizione: {{item.prodotto.descrizione}}</p>
+        <p class="card__data--text">Categoria: {{item.prodotto.categoria}}</p>
+        <p class="card__data--text">Dimensione: {{item.prodotto.dimensione}}</p>
+        <p class="card__data--text">Colore: {{item.prodotto.colore}}</p>
+        <p class="card__data--text">Quantità: {{item.prodotto.quantita}}</p>
+        <p class="card__data--text">Brand: {{item.prodotto.brand}}</p>
+        <p class="card__data--text">Prezzo: {{item.prodotto.prezzo}}</p>
+      </ng-container>
+    </div>
+    <button class="btn btn-danger" (click)="removeFromList(item.prodottoId, item.utenteId)">Rimuovi dalla lista</button>
+  </div>
+</div>
+

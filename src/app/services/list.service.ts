@@ -1,44 +1,52 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { IListItem } from '../Modules/i-list-item';
+import { Iprodotto } from '../Modules/iprodotto';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ListService {
 
-  private listKey = 'wishlistItems';
+  private listKey = 'listItems';
 
-  wishlistItems: BehaviorSubject<IListItem[]> = new BehaviorSubject<IListItem[]>(this.getWishlistFromLocalStorage());
+  listItems: BehaviorSubject<IListItem[]> = new BehaviorSubject<IListItem[]>(this.getlistFromLocalStorage());
 
   constructor() {}
 
-  private getWishlistFromLocalStorage(): IListItem[] {
+  private getlistFromLocalStorage(): IListItem[] {
     const storedWishlist = localStorage.getItem(this.listKey);
     return storedWishlist ? JSON.parse(storedWishlist) : [];
   }
 
-  updateWishlistInLocalStorage(items: IListItem[]): void {
+  updatelistInLocalStorage(items: IListItem[]): void {
     localStorage.setItem(this.listKey, JSON.stringify(items));
   }
 
-  getWishlist(): Observable<IListItem[]> {
-    return this.wishlistItems.asObservable();
+  getlist(): Observable<IListItem[]> {
+    return this.listItems.asObservable();
   }
 
-  addToWishlist(prodottoId: number, utenteId: number): void {
-    const items = this.wishlistItems.value;
-    if (!items.find(item => item.prodottoId === prodottoId && item.utenteId === utenteId)) {
-      items.push({ id: items.length + 1, prodottoId, utenteId });
-      this.wishlistItems.next(items);
-      this.updateWishlistInLocalStorage(items);
+  addTolist(prodotto: Iprodotto, utenteId: number): void {
+    const items = this.listItems.value;
+    // Verifica se il prodotto è già presente nella lista
+    if (!items.find(item => item.prodottoId === prodotto.id)) {
+      const listItem: IListItem = {
+        id: items.length + 1, // Assegna un nuovo ID univoco
+        prodottoId: prodotto.id,
+        utenteId: utenteId,
+        prodotto: prodotto // Assegna l'oggetto del prodotto al campo prodotto
+      };
+      items.push(listItem);
+      this.listItems.next(items);
+      this.updatelistInLocalStorage(items);
     }
   }
 
-  removeFromWishlist(prodottoId: number, utenteId: number): void {
-    let items = this.wishlistItems.value;
+  removeFromlist(prodottoId: number, utenteId: number): void {
+    let items = this.listItems.value;
     items = items.filter(item => !(item.prodottoId === prodottoId && item.utenteId === utenteId));
-    this.wishlistItems.next(items);
-    this.updateWishlistInLocalStorage(items);
+    this.listItems.next(items);
+    this.updatelistInLocalStorage(items);
   }
 }

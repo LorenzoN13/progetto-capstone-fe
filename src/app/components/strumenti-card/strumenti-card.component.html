@@ -1,6 +1,6 @@
 <div class="card-container">
   <div class="card mb-1 p-2 pt-0">
-    <button *ngIf="isLogged" class="addToWishList" (click)="addToWishList(prodotto.id)">
+    <button *ngIf="isLogged" class="addToWishList" (click)="addToWishList(prodotto)">
       <fa-icon [icon]="isInWishlist ? ['fas', 'heart'] : ['far', 'heart']" id="icon" class="paginate-button__icon"></fa-icon>
     </button>
 
@@ -10,6 +10,7 @@
           <p class="card__data--title">{{ prodotto.titolo }}</p>
           <p class="card__data--text">Descrizione: {{prodotto.descrizione }}</p>
           <p class="card__data--text">Brand: {{prodotto.brand }}</p>
+          <p class="card__data--text">Dimensione: {{prodotto.dimensione }}</p>
           <p class="card__data--text">Colore: {{prodotto.colore }}</p>
           <p class="card__data--text">Categoria: {{prodotto.categoria }}</p>
           <p class="card__data--text">Quantita: {{prodotto.quantita }}</p>

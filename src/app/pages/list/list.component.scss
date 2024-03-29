@@ -1,0 +1,148 @@
+.card-container {
+  padding-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin: 0 2.5%;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+  .card {
+    background-color: rgb(255, 255, 255);
+    border-radius: 0.6rem;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    height: 590px;
+    justify-content: center;
+    padding: 0 10px;
+    position: relative;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+
+    &:hover #icon {
+      color: black;
+      filter: brightness(0.8);
+    }
+
+    &__img {
+      align-self: center;
+      height: 100px;
+      max-width: 100%;
+      top: -99px;
+      position: absolute;
+      left: 30%;
+      border-radius: 10px;
+    }
+
+    &__data {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      justify-content: center;
+      margin: 1rem 0rem;
+      transition: all 0.3s;
+      position: absolute;
+      top: 100px;
+
+      &--title {
+        font-weight: bold;
+        text-align: center;
+        font-size: 13px;
+        margin: 0;
+        margin-top: 5px;
+      }
+
+      &--text{
+        margin-bottom: 0;
+        font-size: 10;
+        margin-right: 10px;
+      }
+
+      .addToWishList{
+        z-index: 1000;
+      }
+
+    }
+
+    @media(min-width:768px) {
+
+      &:hover {
+        background-color: rgb(202, 202, 202);
+      }
+    }
+    @media (max-width: 320px) {
+      padding: 5px 10px;
+      &__img {
+        height: 140px;
+        position: static;
+        top: 20px;
+
+      }
+
+      &__data {
+        margin:0.2rem;
+      }
+
+      p{
+        margin-bottom: 0;
+      }
+
+    }
+
+
+
+    @media (max-width: 500px){
+      padding: 5px 10px;
+      &__img {
+        height: 140px;
+        position: static;
+        top: 20px;
+
+      }
+
+      &__data {
+        margin:0.5rem;
+      }
+
+      p{
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .addToWishList{
+    border: none;
+    background:none;
+    position: absolute;
+    top: 20px;
+    color: blue;
+    font-size: 1.8rem;
+    @media (max-width: 450px) {
+      top:10px;
+      font-size: 1.5rem;
+    }
+  }
+  button{
+    position: absolute;
+    bottom: 13px;
+    left: 28%;
+  }
+
+  button:hover{
+    transform: scale(1.03);
+  }
+  a{
+    color:black;
+    text-decoration: none;
+  }
+
+
+
+
+
+

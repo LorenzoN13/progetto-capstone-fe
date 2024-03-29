@@ -33,27 +33,27 @@ export class StrumentiCardComponent {
     this.listSvc = listSvc; // Inizializza listSvc
   }
 
-  addToWishList(prodottoId: number): void {
-    this.fetchWishlist();
+  addToWishList(prodotto: Iprodotto): void {
+    this.fetchlist();
     if (!this.loggedInUser || !this.loggedInUser.obj.id) {
       console.error('Utente non autorizzato');
       return;
     }
     if (!this.listItems) return;
     const isProductInWishlist = this.listItems.some(
-      (item) => item.prodottoId === prodottoId
+      (item) => item.prodottoId === prodotto.id
     );
 
     if (!isProductInWishlist) {
-      this.listSvc.addToWishlist(prodottoId, Number(this.userId));
+      this.listSvc.addTolist(prodotto, Number(this.userId)); // Passa direttamente l'oggetto del prodotto
       console.log('Prodotto aggiunto alla lista dei desideri');
       this.isInWishlist = true;
     }
   }
 
-  fetchWishlist() {
+  fetchlist() {
     if (!this.userId) return;
-    this.listSvc.getWishlist().subscribe({
+    this.listSvc.getlist().subscribe({
       next: (data: any) => {
         this.listItems = data;
       },
