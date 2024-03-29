@@ -1,9 +1,8 @@
 <div class="container-rec">
   <form (ngSubmit)="submitForm()">
     <div class="form-group">
-      <label for="recensione">Recensione</label>
-      <textarea type="recensione" id="recensione" class="form-control" name="recensione" required [(ngModel)]="recensione.recensione"></textarea>
-      <div>La recensione è obbligatoria</div>
+      <label class="fs-4 mb-2" for="recensione">Inserisci la Recensione dello strumento</label>
+      <textarea ngClass="mb-3" type="recensione" id="recensione" class="form-control" name="recensione" required [(ngModel)]="recensione.recensione"></textarea>
     </div>
     <button type="submit">Invia recensione</button>
   </form>

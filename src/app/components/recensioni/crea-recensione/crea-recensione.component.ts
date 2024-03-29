@@ -4,7 +4,7 @@ import { RecensioniService } from '../../../services/recensioni.service';
 import { Irecensione } from '../../../Modules/irecensione';
 import { LogSystemService } from '../../../services/log-system.service';
 import { IutenteAuth } from '../../../Modules/iutente-auth';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-crea-recensione',
@@ -26,7 +26,8 @@ export class CreaRecensioneComponent implements OnInit{
     private formBuilder: FormBuilder,
     private recensioneSvc: RecensioniService,
     private logService: LogSystemService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -91,5 +92,7 @@ export class CreaRecensioneComponent implements OnInit{
         }
       }
     });
+
+    this.router.navigate(['/recensioni'])
   }
 }

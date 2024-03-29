@@ -1,0 +1,17 @@
+.container-rec{
+  width: 50%;
+  position: absolute;
+  left: 25%;
+  top: 30%;
+}
+
+button{
+  border-radius: 5px;
+  padding: 5px 10px;
+  background-color: rgb(175, 175, 175);
+  border: none;
+}
+
+button:hover{
+  background-color: rgb(186, 186, 186);
+}
