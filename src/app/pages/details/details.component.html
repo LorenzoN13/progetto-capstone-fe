@@ -20,11 +20,9 @@
         <div class="d-flex align-items-center">
           <!-- Prezzo del prodotto -->
           <p class="w-50 mt-3 ms-3"><strong>Prezzo: {{ prodotto.prezzo | currency:"EUR" }}</strong></p>
-          <div class="d-flex justify-content-end align-items-center detFoot w-100 ms-3 mt-3">
+          <div class="d-flex justify-content-end align-items-center detFoot w-100 ms-2 mt-3">
             <!-- Bottone per modificare il prodotto (solo se l'utente è loggato come admin) -->
             <button *ngIf="isLogged" [routerLink]="['/edit', prodotto.id]">EDIT</button>
-            <!-- Bottone per aggiungere il prodotto alla lista dei desideri (solo se l'utente è loggato) -->
-            <button class="button" *ngIf="isLogged">WISH</button>
           </div>
         </div>
       </div>
