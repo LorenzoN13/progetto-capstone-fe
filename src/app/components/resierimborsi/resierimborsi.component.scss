@@ -1,0 +1,63 @@
+section {
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  opacity: 1;
+}
+
+p {
+  font-size: 16px;
+  margin-bottom: 10px;
+  opacity: 1;
+}
+
+ul, ol {
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+
+li {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+main
+{
+
+  margin: 10px;
+  //sfondo bianco con trasparenza leggera
+
+  padding: 20px;
+  //bordo arrotondato
+  border-radius: 10px;
+  //ombra
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+
+
+}
+
+/* Stili per le sezioni */
+main section {
+  background-color: #fff; /* Sfondo bianco per ogni sezione */
+  border: 1px solid #ddd; /* Bordo sottile per definire le sezioni */
+  padding: 15px;
+  margin-bottom: 20px; /* Spazio tra le sezioni */
+  border-radius: 5px; /* Angoli arrotondati per un aspetto morbido */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Ombra leggera per profondità */
+  opacity: 0.8;
+}
+/* Stili per i titoli delle sezioni */
+main h2, main h3 {
+  color: #0275d8; /* Colore blu per i titoli */
+  margin-top: 0;
+}

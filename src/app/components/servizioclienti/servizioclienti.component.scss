@@ -1,0 +1,112 @@
+
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 20px;
+  background: #f4f4f4;
+  color: black;
+}
+
+.contact-container {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-container h2 {
+  color:#0275d8;
+  opacity: 1;
+}
+
+.contact-options {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.contact-sales, .contact-support {
+  flex-basis: 48%;
+  background: #fff;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.icon-phone, .icon-headset {
+  display: block;
+  margin: 0 auto 10px;
+  font-size: 2em;
+}
+
+.phone-number {
+  color: #ff6f61;
+  font-weight: bold;
+}
+
+.view-numbers, button {
+  margin-top: 10px;
+  background: #0275d8;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+
+button {
+  border: none;
+  outline: none;
+  font-size: 1em;
+}
+
+.bg-80{
+  height: 120vh;
+}
+
+.contact-container{
+  background-color: #ffffff; /* Sfondo bianco per ogni sezione */
+  margin: 20px;
+  padding: 15px;
+  margin-bottom: 20px; /* Spazio tra le sezioni */
+  border-radius: 5px; /* Angoli arrotondati per un aspetto morbido */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Ombra leggera per profondità */
+
+
+}
+
+
+
+@media only screen and (max-width: 600px){
+.contact-options{
+  display: flex;
+  flex-direction: column;
+}
+.contact-support{
+  margin-top: 20px;
+}
+}
+
+.contact-container {
+  position: relative;
+  background-color: rgba(177, 230, 255, 0.2);
+  padding: 20px;
+}
+
+
+
+.contact-container:after {
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.bottoneHvr:hover{
+  transform: scale(1.05);
+}

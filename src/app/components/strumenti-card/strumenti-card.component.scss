@@ -133,16 +133,14 @@ a{
   bottom: 12px;
   right: 20px;
   border-radius: 5px;
-  background-color: white;
+  background-color: rgb(174, 174, 174);
+  padding: 5px 15px;
 }
 
-.bot-val{
-  position: absolute;
-  bottom: 12px;
-  right: 120px;
-  border-radius: 5px;
-  background-color: white;
+.bot-rec:hover{
+  background-color: rgb(141, 141, 141);
 }
+
 
 
 

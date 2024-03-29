@@ -77,11 +77,4 @@ export class StrumentiCardComponent {
     // Ecco un esempio di navigazione verso un'altra pagina passando l'ID del prodotto come parametro
     this.router.navigate(['/crea-recensione', productId ]);
   }
-
-  openvalutazioniForm(productId: number) {
-    this.prodotto.id = productId;
-
-    // Ecco un esempio di navigazione verso un'altra pagina passando l'ID del prodotto come parametro
-    this.router.navigate(['/crea-valutazione', productId ]);
-  }
 }

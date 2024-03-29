@@ -1,0 +1,50 @@
+/* Stili generali per il main */
+main {
+
+  background-color: #f7f7f7; /* Sfondo chiaro per contrasto */
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  color: #333; /* Colore del testo scuro per leggibilità */
+  max-width: 800px; /* Larghezza massima per una lettura confortevole */
+  margin: 0 auto; /* Centrare il main nella pagina */
+}
+
+/* Stili per le sezioni */
+div section {
+  background-color: #fff; /* Sfondo bianco per ogni sezione */
+  border: 1px solid #ddd; /* Bordo sottile per definire le sezioni */
+  padding: 15px;
+  margin-bottom: 20px; /* Spazio tra le sezioni */
+  border-radius: 5px; /* Angoli arrotondati per un aspetto morbido */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Ombra leggera per profondità */
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+/* Stili per i titoli delle sezioni */
+div h2, main h3 {
+  color: #0275d8; /* Colore blu per i titoli */
+  margin-top: 0;
+}
+
+/* Stili per i paragrafi */
+div p {
+  line-height: 1.6; /* Spaziatura della linea per una migliore leggibilità */
+}
+
+
+
+div section {
+  background-color: #fff; /* Sfondo bianco per ogni sezione */
+  border: 1px solid #ddd; /* Bordo sottile per definire le sezioni */
+  padding: 15px;
+  margin-bottom: 20px; /* Spazio tra le sezioni */
+  border-radius: 5px; /* Angoli arrotondati per un aspetto morbido */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Ombra leggera per profondità */
+  opacity: 0.8;
+}
+/* Stili per i titoli delle sezioni */
+div h2, div h3 {
+  color: #0275d8; /* Colore blu per i titoli */
+  margin-top: 0;
+}
