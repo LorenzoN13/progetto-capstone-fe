@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import {  Observable } from 'rxjs';
 import { Irecensione } from '../Modules/irecensione';
 import { environment } from '../../environments/environment.development';
+import { IProdottoByIdResponse } from '../Modules/i-prodotto-by-id-response';
 
 
 
@@ -27,5 +28,9 @@ export class RecensioniService {
 
   deleteRecensioni(id: number): Observable<Irecensione> {
     return this.http.delete<Irecensione>(`${this.apiUrl}/${id}`);
+  }
+
+  getProdottoById(id:number):Observable<IProdottoByIdResponse>{
+    return this.http.get<IProdottoByIdResponse>(`${this.apiUrl}/${id}`);
   }
 }

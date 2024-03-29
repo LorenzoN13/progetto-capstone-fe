@@ -1,3 +1,4 @@
+import { Iprodotto } from './../../../Modules/iprodotto';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RecensioniService } from '../../../services/recensioni.service';
@@ -5,7 +6,6 @@ import { Irecensione } from '../../../Modules/irecensione';
 import { LogSystemService } from '../../../services/log-system.service';
 import { IutenteAuth } from '../../../Modules/iutente-auth';
 import { ActivatedRoute, Router } from '@angular/router';
-
 @Component({
   selector: 'app-crea-recensione',
   templateUrl: './crea-recensione.component.html',
@@ -19,9 +19,10 @@ export class CreaRecensioneComponent implements OnInit{
   recensione: Irecensione = {
     recensione: '',
     idUtente: 0,
-    idProdotto: 0
+    idProdotto: 0,
   };
 
+  prodotto: Iprodotto | undefined; // Variabile per memorizzare il prodotto
   constructor(
     private formBuilder: FormBuilder,
     private recensioneSvc: RecensioniService,
