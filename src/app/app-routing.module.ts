@@ -7,7 +7,6 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
 import { PaymentComponent } from './components/payment/payment.component';
 import { BancomatComponent } from './components/payment/bancomat/bancomat.component';
 import { TransferComponent } from './components/payment/transfer/transfer.component';
-import { ValutazioniComponent } from './components/valutazioni/valutazioni.component';
 import { LogGuard } from './pages/log-system/log.guard';
 import { EditComponent } from './pages/edit/edit.component';
 import { CreateComponent } from './pages/create/create.component';
@@ -22,9 +21,7 @@ const routes: Routes = [
   { path: 'recensioni', component: RecensioniComponent,children:[] },
   { path: 'details/:id', component: DetailsComponent },
   { path: 'userprofile', component: UserProfileComponent, canActivate:[LogGuard]},
-  { path: 'valutazioni', component: ValutazioniComponent},
   { path: 'crea-recensione/:id', component: CreaRecensioneComponent, canActivate:[LogGuard]}, // }
-  { path: 'crea-valutazione/:id', component: CreaRecensioneComponent, canActivate:[LogGuard]},
   { path: 'payment', component: PaymentComponent,
   children:[
     { path: 'bancomat', component: BancomatComponent},

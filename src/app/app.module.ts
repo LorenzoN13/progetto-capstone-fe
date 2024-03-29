@@ -19,7 +19,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RecensioniComponent } from './components/recensioni/recensioni.component';
 import { BancomatComponent } from './components/payment/bancomat/bancomat.component';
 import { TransferComponent } from './components/payment/transfer/transfer.component';
-import { ValutazioniComponent } from './components/valutazioni/valutazioni.component';
 import { HttpClientModule } from '@angular/common/http';
 import { OrdineComponent } from './components/ordine/ordine.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
@@ -31,7 +30,6 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { CartIconComponent } from './components/header/cart-icon/cart-icon.component';
 import { CreaRecensioneComponent } from './components/recensioni/crea-recensione/crea-recensione.component';
-import { CreaValutazioneComponent } from './components/valutazioni/crea-valutazione/crea-valutazione.component';
 
 @NgModule({
   declarations: [
@@ -51,14 +49,12 @@ import { CreaValutazioneComponent } from './components/valutazioni/crea-valutazi
     RecensioniComponent,
     BancomatComponent,
     TransferComponent,
-    ValutazioniComponent,
     OrdineComponent,
     CarouselComponent,
     PaginatorComponent,
     ListComponent,
     CartIconComponent,
     CreaRecensioneComponent,
-    CreaValutazioneComponent,
   ],
   imports: [
     BrowserModule,
