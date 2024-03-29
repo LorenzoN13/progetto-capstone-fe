@@ -4,9 +4,6 @@ import { HomeComponent } from './pages/home/home.component';
 import { RecensioniComponent } from './components/recensioni/recensioni.component';
 import { DetailsComponent } from './pages/details/details.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
-import { PaymentComponent } from './components/payment/payment.component';
-import { BancomatComponent } from './components/payment/bancomat/bancomat.component';
-import { TransferComponent } from './components/payment/transfer/transfer.component';
 import { LogGuard } from './pages/log-system/log.guard';
 import { EditComponent } from './pages/edit/edit.component';
 import { CreateComponent } from './pages/create/create.component';
@@ -29,13 +26,6 @@ const routes: Routes = [
   { path: 'servizioclienti', component: ServizioclientiComponent},
   { path: 'resierimborsi', component: ResierimborsiComponent},
   { path: 'list', component: ListComponent},
-  { path: 'payment', component: PaymentComponent,
-  children:[
-    { path: 'bancomat', component: BancomatComponent},
-    { path: 'transfer', component: TransferComponent},
-    { path: '', redirectTo: 'bancomat', pathMatch: 'full' }
-  ],
-  canActivate:[LogGuard]},
   { path: 'edit/:id', component: EditComponent ,canActivate:[LogGuard]},
   { path: 'create', component: CreateComponent ,canActivate:[LogGuard]},
   { path: '**', component:Pages404Component},

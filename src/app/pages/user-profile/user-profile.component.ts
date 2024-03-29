@@ -2,13 +2,11 @@ import { Component } from '@angular/core';
 import { IutenteAuth } from '../../Modules/iutente-auth';
 import { Iutente } from '../../Modules/iutente';
 import { LogSystemService } from '../../services/log-system.service';
-import { RuoliService } from '../../services/ruoli.service';
-import { OrdineService } from '../../services/ordine.service';
 import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-user-profile',
-  templateUrl: './user-profile.component.html',
+  templateUrl:'./user-profile.component.html',
   styleUrl: './user-profile.component.scss'
 })
 export class UserProfileComponent {
@@ -22,7 +20,6 @@ export class UserProfileComponent {
 
   constructor(
     private LSS:LogSystemService,
-    private OrdineSVC:OrdineService,
   ){
     this.LSS.utente$.subscribe(userAuth =>{
       this.userAuth=userAuth;
@@ -82,13 +79,5 @@ export class UserProfileComponent {
     this.deleting=false;
   }
 
-  deleteCartArr(){
-    if(!this.user?.id) return
-    this.OrdineSVC.getShop(Number(this.user?.id)).subscribe(cartArr=>{
-      cartArr.forEach(element => {
-        this.OrdineSVC.deleteCart(element.id).subscribe();
-      });
-    })
-  }
 
 }

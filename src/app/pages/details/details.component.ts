@@ -2,10 +2,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Iordine } from '../../Modules/iordine';
 import { Iprodotto } from '../../Modules/iprodotto';
 import { ProdottiService } from './../../services/prodotti.service';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { LogSystemService } from '../../services/log-system.service';
-import { ListService } from '../../services/list.service';
-import { OrdineService } from '../../services/ordine.service';
 import { RuoliService } from '../../services/ruoli.service';
 import { IutenteAuth } from '../../Modules/iutente-auth';
 
@@ -27,7 +25,6 @@ export class DetailsComponent{
     private route: ActivatedRoute,
     private prodottoSvc: ProdottiService,
     private LSS:LogSystemService,
-    private ordineSvc: OrdineService,
     private RolesSVC:RuoliService,
     private router: Router
   ) {}

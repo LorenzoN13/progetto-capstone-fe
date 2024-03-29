@@ -11,16 +11,11 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
 import { EditProfileComponent } from './pages/user-profile/edit-profile/edit-profile.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
-import { AddToShopComponent } from './components/add-to-shop/add-to-shop.component';
-import { PaymentComponent } from './components/payment/payment.component';
 import { StrumentiCardComponent } from './components/strumenti-card/strumenti-card.component';
 import { DetailsComponent } from './pages/details/details.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RecensioniComponent } from './components/recensioni/recensioni.component';
-import { BancomatComponent } from './components/payment/bancomat/bancomat.component';
-import { TransferComponent } from './components/payment/transfer/transfer.component';
 import { HttpClientModule } from '@angular/common/http';
-import { OrdineComponent } from './components/ordine/ordine.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { PaginatorComponent } from './components/paginator/paginator.component';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -45,14 +40,9 @@ import { ResierimborsiComponent } from './components/resierimborsi/resierimborsi
     EditProfileComponent,
     FooterComponent,
     HeaderComponent,
-    AddToShopComponent,
-    PaymentComponent,
     StrumentiCardComponent,
     DetailsComponent,
     RecensioniComponent,
-    BancomatComponent,
-    TransferComponent,
-    OrdineComponent,
     CarouselComponent,
     PaginatorComponent,
     ListComponent,
