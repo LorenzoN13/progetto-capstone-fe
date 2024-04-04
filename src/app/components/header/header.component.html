@@ -9,23 +9,31 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="change nav-link d-none d-sm-none d-md-block line" routerLink="/home">HOME</a>
-          <a class="change nav-link d-none d-sm-none d-md-block line" routerLink="/recensioni">RECENSIONI</a>
+          <a class="change nav-link  d-md-block line" routerLink="/home">HOME</a>
+          <a class="change nav-link   d-md-block line" routerLink="/recensioni">RECENSIONI</a>
           <!-- Questa direttiva strutturale serve ha verificare la visibilità di un elemento in questo caso il link che porta alla pagina di creazione del prodotto
           in pratica verifica se l'utente è loggato, se è loggato alla rendera visibile il link se no lo nasconderà.-->
-          <a *ngIf="isLogged" class= "change nav-link d-none d-sm-none d-md-block line"  routerLink="/create">Crea prodotto</a>
-          <a *ngIf="isLogged" class= "change nav-link d-none d-sm-none d-md-block line"  routerLink="/list">Lista dei prodotti</a>
+          <a *ngIf="isLogged" class= "change nav-link d-md-block line"  routerLink="/create">Crea prodotto</a>
+          <a *ngIf="isLogged" class= "change nav-link d-md-block line"  routerLink="/list">Lista dei prodotti</a>
+          <a class="line d-flex align-items-center d-lg-none me-3 " routerLink="/userprofile">
+            <fa-icon [icon]="['far','user']" class="paginate-button__icon h4  d-lg-block log-in-icon mt-2"></fa-icon>
+            <!-- Questo paragrafo viene visualizzato solo se:
+                  - isLogged è true (utente autenticato)
+                  - user?.obj è definito (per evitare errori nel caso in cui user non sia ancora stato inizializzato) -->
+            <p *ngIf="isLogged && user?.obj" class=" line m-0 ms-2">{{user.obj.nome}}</p>
+            <p *ngIf="!isLogged" class="m-0 me-4 ms-2 d-lg-none">Login</p>
+          </a>
         </div>
       </div>
     </div>
     <div>
-      <a class="line d-flex align-items-center me-3" routerLink="/userprofile">
-        <fa-icon [icon]="['far','user']" class="paginate-button__icon h4 log-in-icon mt-2"></fa-icon>
-        <!--Questo paragrafo viene visualizzato solo se:
-            - isLogged è true (utente autenticato)
-            - user?.obj è definito (per evitare errori nel caso in cui user non sia ancora stato inizializzato)-->
+      <a class="line d-flex align-items-center  me-3 " routerLink="/userprofile">
+        <fa-icon [icon]="['far','user']" class="paginate-button__icon h4 d-none d-lg-block log-in-icon mt-2"></fa-icon>
+        <!-- Questo paragrafo viene visualizzato solo se:
+              - isLogged è true (utente autenticato)
+              - user?.obj è definito (per evitare errori nel caso in cui user non sia ancora stato inizializzato) -->
         <p *ngIf="isLogged && user?.obj" class="d-none d-lg-block line m-0 ms-2">{{user.obj.nome}}</p>
-        <p *ngIf="!isLogged" class="m-0 me-4 ms-2 fs-5 ">Login</p>
+        <p *ngIf="!isLogged" class="m-0 me-4 ms-2 d-lg-none">Login</p>
       </a>
     </div>
   </nav>
